@@ -1,0 +1,337 @@
+
+.epieBox {
+    position:fixed !important;
+    font-family:Arial, Verdana, sans-serif;
+    font-size:16px;
+}
+
+.epieBox a { text-decoration:none; color:black; }
+.epieBox ul , .epieBox li { list-style-type:none; }
+
+.epieBox * {
+    margin:0px;
+    padding:0px;
+}
+
+.drawZone {
+    width:700px;
+    left:30%;
+    top:10%;
+}
+
+#epieOptsWindow { position: absolute;
+    width:184px;
+    top:10%;
+    left:78%;
+    z-index:101;
+    display:none;
+}
+#epieOptsWindow .content {
+    height:400px;
+}
+
+.topBar {
+    height:42px;
+    cursor:move;
+    overflow:hidden;
+}
+
+.topBarContent {
+    background:url("../images/topBarBg.png") repeat-x;
+    height:42px;
+    margin:0px 19px;
+}
+
+.topBarContent h2 {
+    font-size:0.875em;
+    text-shadow:1px 1px 0px white;
+    padding:18px 6px;
+    float:left;
+}
+
+.topBar .leftCorner {
+    background:url("../images/topBarLeftCorner.png") no-repeat;
+    height:42px;
+    width:19px;
+    float:left;
+}
+
+.topBar .rightCorner {
+    background:url("../images/topBarRightCorner.png") no-repeat;
+    height:42px;
+    width:19px;
+    float:right;
+}
+
+.contentLeft {
+    background:url("../images/contentLeftShadow.png") top left repeat-y;
+    padding-left:12px;
+}
+
+.contentRight {
+    background:url("../images/contentRightShadow.png") top right repeat-y;
+    padding-right:12px;
+}
+
+#epieToolsWindow .content {
+    background:#f2f2f2;
+    height:100%;
+    min-height:400px;
+}
+
+.content {
+    background:url("../images/editorBg.png");
+    position:relative;
+}
+
+#grid {
+    height:370px;
+    margin-right:161px;
+    overflow:scroll;
+}
+
+.topMenu {
+    height:26px;
+    background:url("../images/menuBarBg.png") repeat-x;
+    padding:4px 10px 0 12px;
+    font-size:0.75em;
+}
+
+.topMenu li a {
+    display:block;
+    float:left;
+    font-weight:normal;
+    margin-right:10px;
+    padding:3px 15px 3px 5px;
+    height:15px;
+}
+
+.topMenu li:hover a {
+    background:white;
+    border:1px solid #ccc;
+    padding-top:2px;
+    padding-left:4px;
+    padding-right:14px;
+}
+
+.topMenu h2 {
+    font-size:1em;
+    padding-top:1px;
+    float:left;
+}
+
+.tools {
+    padding:10px;
+}
+
+.tools li {
+    height:20px;
+    width:20px;
+    margin-right:7px;
+    margin-bottom:7px;
+    float:left;
+    border:1px solid #ccc;
+}
+
+.tools li a {
+    display:block;
+    height:16px;
+    width:16px;
+}
+
+#epie_select { background:url("../images/icoSelect.png") no-repeat; }
+#epie_zoom { background:url("../images/icoLoupe.png") no-repeat; }
+#epie_undo { background:url("../images/icoUndo.png") no-repeat; }
+#epie_redo { background:url("../images/icoRedo.png") no-repeat; }
+#epie_pot { background:url("../images/icoPot.png") no-repeat; }
+#epie_img { background:url("../images/icoImg.png") no-repeat; }
+
+
+.filters {
+}
+.filters li {
+    padding:4px 10px;
+    border-bottom:1px solid #ccc;
+    font-size:0.75em;
+}
+.filters li:hover {
+    background:#DFDFDF;
+}
+
+.section {
+    overflow:hidden;
+}
+
+.sectionHeader {
+    background:url("../images/menuBarBg.png") repeat-x;
+    height:30px;
+}
+
+.sectionHeader h4 {
+    font-size:0.8125em;
+    padding:7px 10px 0 10px !important;
+    color:black !important;
+    background:url("../images/arrowDown.png") 90% 7px no-repeat;
+    cursor:pointer;
+}
+.sectionHeader h4.closed {
+    background:url("../images/arrowUp.png") 90% 7px no-repeat;
+}
+
+.sectionHeader h4:hover {
+    background:url("../images/arrowUp.png") 90% 7px no-repeat;
+}
+.sectionHeader h4.closed:hover {
+    background:url("../images/arrowDown.png") 90% 7px no-repeat;
+}
+
+.bottomBar {
+    height:37px;
+    position:relative;
+}
+.bottomBar .leftCorner {
+    height:37px;
+    width:19px;
+    background:url("../images/bottomBarLeftBorder.png") no-repeat;
+    float:left;
+}
+.bottomBar .rightCorner {
+    height:37px;
+    width:19px;
+    background:url("../images/bottomBarRightBorder.png") no-repeat;
+    float:right;
+}
+.bottomBar .bottomBarContent {
+    margin:0 19px;
+    background:url("../images/bottomBarBg.png") repeat-x;
+    height:37px;
+}
+
+.bottomBarContent p {
+    font-size:0.75em;
+    color:#777;
+    padding:4px 0;
+}
+
+#epieToolsWindow {
+    display: none;
+    z-index:101;
+    width:160px;
+    left:20%;
+    top:10%;
+}
+
+#epieMainWindow {
+    display: none;
+    z-index:101;
+}
+
+#epieMainContainer { 
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url("../images/epie_white_transparent_background.png");
+    z-index:100;
+    width: 100%;
+    height: 100%;
+}
+
+#window {
+    float:right;
+    padding-top:18px;
+}
+
+#window li {
+    float:left;
+    margin-left:3px;
+}
+
+#epie_expand {
+    display:block;
+    background:url("../images/icoExpand.gif") center center no-repeat;
+    height:16px;
+    width:16px;
+}
+
+#epie_close {
+    display:block;
+    background:url("../images/icoClose.gif") center center no-repeat;
+    height:16px;
+    width:16px;
+}
+
+#sideBar {
+    background:#f0f0f0;
+    border-left:1px solid #ccc;
+    height:100%;
+    position:absolute;
+    width:160px;
+    top:0px;
+    right:0px;
+}
+
+#miniature {
+    margin:10px;
+    width:138px;
+    height:auto;
+    border:1px solid #ccc;
+    text-align: center;
+}
+
+#miniature img {
+    max-width: 135px;
+    max-height: 135px;
+}
+
+.slider {
+    margin:10px;
+}
+
+.sep {
+    height:9px;
+    width:9px;
+    float:right;
+    margin-top:7px;
+}
+
+.detachBox .sep {
+    background:url("../images/icoDetach.gif");
+}
+.attachBox .sep {
+    background:url("../images/icoAttach.gif");
+}
+
+.ui-icon { width: 16px; height: 16px; background-image: url(../images/ui-icons_222222_256x240.png); }
+
+.opts input {
+    height:16px;
+    margin:5px 10px;
+    padding:4px;
+    width:129px;
+}
+
+.opts button {
+    background:url("../images/validationButton.png") no-repeat;
+    height:30px;
+    width:71px;
+    color:white;
+    margin-left:7px;
+    border:none;
+    cursor:pointer;
+}
+.opts button:active {
+    background:url("../images/validationButtonActive.png") no-repeat;
+}
+.opts button:hover {
+    background:url("../images/validationButtonHover.png") no-repeat;
+}
+
+#loadingBar {
+    height:13px;
+    width:208px;
+    background:url("../images/loading.gif") no-repeat;
+    position:absolute;
+    right:17px;
+    top:6px;
+}
