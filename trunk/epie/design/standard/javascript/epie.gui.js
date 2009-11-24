@@ -6,6 +6,7 @@ epie.gui.epiegui = function () {
     var mainWindow = null;
     var toolWindow = null;
     var optsWindow = null;
+    var variationsBar = null;
     var jWindow = null;
     var initialized = false;
 
@@ -21,6 +22,7 @@ epie.gui.epiegui = function () {
         toolWindow.hide();
         optsWindow.hide();
         mainWindow.hide();
+        variationsBar.hide();
 
         hide();
     };
@@ -33,6 +35,7 @@ epie.gui.epiegui = function () {
         toolWindow.show();
         mainWindow.show();
         optsWindow.show();
+        variationsBar.show();
 
         show();
     };
@@ -57,27 +60,17 @@ epie.gui.epiegui = function () {
             }
         });
 
-        $("#epie_expand").click(function() {
-            var draw = $(this).parents(".drawZone");
-            if ($(this).hasClass('smallUi')) {
-                draw.animate({
-                    left: "5%",
-                    top:"5%",
-                    height:"90%",
-                    width:"90%"
-                });
-            } else {
-                draw.animate({
-                    left: "30%",
-                    top:"10%",
-                    height:"90%",
-                    width:"600px"
-                });
-            }
-            $(this).toggleClass("smallUi");
-            optsWindow.switchjWindow();
-
+        $("#epieVariations li").click(function () {
+            $(this).toggleClass("selected");
             return false;
+        });
+
+        $(window).resize(function () {
+           $("#epieVariationsBar").css({
+                width:'95%',
+                top:'auto',
+                bottom:0
+           });
         });
 
         $(".closed").parent(".sectionHeader").next(".sectionContent").hide();
@@ -110,7 +103,6 @@ epie.gui.epiegui = function () {
                 marginRight: "161px"
             });
             $('#epieOptsWindow').fadeOut().find(".attachBox").removeClass("attachBox").addClass("detachBox").appendTo($("#epieMainWindow .content")).hide().fadeIn();
-
             return false;
         });
     };
@@ -122,6 +114,7 @@ epie.gui.epiegui = function () {
         mainWindow = new epie.gui.main_window();
         toolWindow = new epie.gui.tools_window();
         optsWindow = new epie.gui.opts_window();
+        variationsBar = new epie.gui.variations_bar();
 
         jWindow = $("#epieMainContainer");
         initialized = true;

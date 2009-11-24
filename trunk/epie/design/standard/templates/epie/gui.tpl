@@ -36,11 +36,13 @@
                         'epie.gui.main_window.js',
                         'epie.gui.tools_window.js',
                         'epie.gui.opts_window.js',
+                        'epie.gui.variations_bar.js',
                         'epie.gui.config.bindings.opts_items_sliders.js',
                         'epie.gui.config.bindings.opts_items_buttons.js',
                         'epie.gui.config.bindings.main_window.js',
                         'epie.gui.config.bindings.tools_window.js',
                         'epie.gui.config.bindings.opts_window.js',
+                        'epie.gui.config.bindings.variations_bar.js',
                         'jquery.epie.js',
                         'jquery.imgareaselect.min.js',
                         'jquery.hotkeys.js')
@@ -48,9 +50,10 @@
 }
 
 
-{ezcss_require( array( 'epie.css',
+{ezcss_require( array(  'epie.css',
                         'slider.css',
-                        'imgareaselect-animated.css') )}
+                        'imgareaselect-animated.css',
+                        'variation.css') )}
 
 <div id="epieMainContainer">
     <div class="epieBox drawZone" id="epieMainWindow">
@@ -216,4 +219,20 @@
         </div>
     </div>
 
+
+    <div id="epieControlBar"></div>
+
+    <div id="epieVariationsBar">
+        <div id="epieVariationsTop">
+            <h2>Variations</h2>
+        </div>
+        <div id="epieVariationsContent">
+            <ul id="epieVariations">
+                <li><a href="#"><img src="/ezpp/extension/epie/design/standard/images/variation.png" alt="" /></a></li>
+                <li><a href="#"><img src="/ezpp/extension/epie/design/standard/images/variation.png" alt="" /></a></li>
+                <li><a href="#"><img src="/ezpp/extension/epie/design/standard/images/variation.png" alt="" /></a></li>
+                <li><a href="#"><img src="/ezpp/extension/epie/design/standard/images/variation.png" alt="" /></a></li>
+            </ul>
+        </div>
+    </div>
 </div>
