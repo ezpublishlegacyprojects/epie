@@ -61,11 +61,9 @@ epie.epiehistory = function() {
     };
 
     var hasAntecedent = function() {
-        $.log(history_version);
         return (history_version > 0);
     }
     var hasSuccessor = function() {
-        $.log("history : " + history.length);
         return (history_version != -1 && history_version + 1 < history.length);
     }
 

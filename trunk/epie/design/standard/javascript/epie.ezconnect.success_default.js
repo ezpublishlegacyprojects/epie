@@ -8,4 +8,7 @@ epie.ezconnect.success_default = function(response) {
     if (response.image_url && response.thumbnail_url) {
         epie.gui.epiegui.getInstance().setImages(response.image_url, response.thumbnail_url);
     }
+
+    epie.gui.epiegui.getInstance().activateUndo();
+    epie.gui.epiegui.getInstance().desactivateRedo();
 };
