@@ -45,7 +45,7 @@
 .topBarContent h2 {
     font-size:0.875em;
     text-shadow:1px 1px 0px white;
-    padding: 15px 6px;
+    padding:15px 6px;
     float:left;
 }
 
@@ -120,31 +120,43 @@
     float:left;
 }
 
+#epieToolsWindow .tools {
+    padding:10px 0px 3px 16px;
+}
+
+#optsRotation .tools {
+    padding:0px 10px;
+}
+
 .tools {
-    padding:10px;
+    overflow:hidden;
 }
 
 .tools li {
-    height:20px;
-    width:20px;
-    margin-right:7px;
+    height:26px;
+    width:26px;
+    margin-right:12px;
     margin-bottom:7px;
     float:left;
-    border:1px solid #ccc;
+    background:url("../images/iconBg.png") no-repeat;
 }
 
 .tools li a {
     display:block;
     height:16px;
     width:16px;
+    padding:5px;
+    background:no-repeat center center;
 }
 
-#epie_select { background:url("../images/icoSelect.png") no-repeat; }
-#epie_zoom { background:url("../images/icoLoupe.png") no-repeat; }
-#epie_undo { background:url("../images/icoUndo.png") no-repeat; }
-#epie_redo { background:url("../images/icoRedo.png") no-repeat; }
-#epie_pot { background:url("../images/icoPot.png") no-repeat; }
-#epie_img { background:url("../images/icoImg.png") no-repeat; }
+#epie_select { background-image:url("../images/ico/selection.png")}
+#epie_zoom { background-image:url("../images/ico/loupe.png") }
+#epie_undo { background-image:url("../images/ico/arrowGreyLeft.png") }
+#epie_redo { background-image:url("../images/ico/arrowGreyRight.png") }
+#epie_pot { background-image:url("../images/ico/pot.png") }
+#epie_img { background-image:url("../images/ico/img.png") }
+#epie_rotation_left { background-image:url("../images/ico/rotationLeft.png") }
+#epie_rotation_right { background-image:url("../images/ico/rotationRight.png") }
 
 
 .filters {

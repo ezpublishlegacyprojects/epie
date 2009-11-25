@@ -20,6 +20,9 @@ epie.gui.opts_window = function() {
                 change:function () {
                     config.change();
                     return false;
+                },
+                slide:function(event, ui) {
+                    config.slide(ui.value);
                 }
             });
         });

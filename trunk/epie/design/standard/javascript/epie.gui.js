@@ -51,6 +51,13 @@ epie.gui.epiegui = function () {
     var initGUI = function() {
         // global functionnalities & effects
 
+        var resizeLi = function(h) {
+            $("#epieVariations li").css({
+                'height':  h,
+                'width': h
+            });
+        }
+
         $(".epieBox").hover(function() {
             if (!$(this).data("init")) {
                 $(this).data("init", true);
@@ -60,18 +67,6 @@ epie.gui.epiegui = function () {
             }
         });
 
-        $("#epieVariations li").click(function () {
-            $(this).toggleClass("selected");
-            return false;
-        });
-
-        $(window).resize(function () {
-           $("#epieVariationsBar").css({
-                width:'95%',
-                top:'auto',
-                bottom:0
-           });
-        });
 
         $(".closed").parent(".sectionHeader").next(".sectionContent").hide();
         // TODO: move this
@@ -89,6 +84,38 @@ epie.gui.epiegui = function () {
             minWidth:400
         });
 
+        var prev = 0;
+        $("#epieVariations").hide();
+        $("#epieVariationsBar").resizable({
+            handles:'n',
+            maxHeight: 170,
+            minHeight: 5,
+            resize: function() {
+                var h = ($(this).height() - 40);
+                if (prev > 10 && h <= 10) {
+                    $("#epieVariations").hide();
+                    prev = h;
+                } else if (prev <= 10 && h > 10) {
+                    $("#epieVariations").fadeIn("slow");
+                    prev = h;
+                }
+                resizeLi(h);
+            }
+        });
+
+        $("#epieVariations li").click(function () {
+            $(this).toggleClass("selected");
+            return false;
+        });
+
+        $(window).resize(function () {
+           $("#epieVariationsBar").css({
+                width:'95%',
+                top:'auto',
+                bottom:0
+           });
+        });
+
         $(".detachBox .sep").live("click", function() {
             var optBox = $('#epieOptsWindow');
             $(this).closest(".detachBox").removeClass("detachBox").addClass("attachBox").appendTo(optBox.find(".content"));
@@ -103,7 +130,23 @@ epie.gui.epiegui = function () {
                 marginRight: "161px"
             });
             $('#epieOptsWindow').fadeOut().find(".attachBox").removeClass("attachBox").addClass("detachBox").appendTo($("#epieMainWindow .content")).hide().fadeIn();
+
             return false;
+        });
+        $('#colorSelector').ColorPicker({
+            color: '#0000ff',
+            onShow: function (colpkr) {
+                $(colpkr).fadeIn(500);
+                return false;
+            },
+            onHide: function (colpkr) {
+                $(colpkr).fadeOut(500);
+                return false;
+            },
+            onChange: function (hsb, hex, rgb) {
+                $('#colorSelector div').css('backgroundColor', '#' + hex);
+                $("#optsRotation input[name='color']").val(hex);
+            }
         });
     };
 

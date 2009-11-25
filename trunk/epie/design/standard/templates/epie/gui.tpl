@@ -45,7 +45,11 @@
                         'epie.gui.config.bindings.variations_bar.js',
                         'jquery.epie.js',
                         'jquery.imgareaselect.min.js',
-                        'jquery.hotkeys.js')
+                        'jquery.hotkeys.js',
+                        'colorpicker/colorpicker.js',
+                        'eye.js',
+                        'utils.js',
+                        'vtip-min.js')
                         )
 }
 
@@ -53,7 +57,9 @@
 {ezcss_require( array(  'epie.css',
                         'slider.css',
                         'imgareaselect-animated.css',
-                        'variation.css') )}
+                        'variation.css',
+                        'colorpicker.css',
+                        'vtip.css') )}
 
 <div id="epieMainContainer">
     <div class="epieBox drawZone" id="epieMainWindow">
@@ -105,7 +111,12 @@
                             <div class="topMenu"><h2>Rotation</h2></div>
                             <div class="slider"></div>
                             <input type="text" name="angle" value="0" />
-                            <input type="text" name="color" value="FFFFFF" />
+                            <ul class="tools">
+                                <li><a id="epie_rotation_left" class="vtip" title="Rotation 90° antihoraire" href="#"></a></li>
+                                <li><a id="epie_rotation_right" class="vtip" title="Rotation 90° horaire" href="#"></a></li>
+                            </ul>
+                            <input type="hidden" name="color" value="FFFFFF" />
+                            <div id="colorSelector"><div style="background-color: #ffffff"></div></div>
                             <button type="button">Ok</button>
                         </div>
                         <div id="optsLevels" class="opts">
@@ -152,12 +163,12 @@
                         </div>
                         <div class="sectionContent">
                             <ul class="tools">
-                                <li><a class="tool" id="epie_select" href="" title="Select tool"></a></li>
-                                <li><a class="tool" id="epie_zoom" href="" title="Zoom tool"></a></li>
-                                <li><a class="tool" id="epie_undo" href="" title="Undo tool"></a></li>
-                                <li><a class="tool" id="epie_redo" href="" title="Redo tool"></a></li>
-                                <li><a class="tool" id="epie_pot" href="" title="Paint Pot tool"></a></li>
-                                <li><a class="tool" id="epie_img" href="" title="Image tool"></a></li>
+                                <li><a id="epie_select" href="" title="Select tool"></a></li>
+                                <li><a id="epie_undo" href="" title="Undo tool"></a></li>
+                                <li><a id="epie_redo" href="" title="Redo tool"></a></li>
+                                <li><a id="epie_zoom" href="" title="Zoom tool"></a></li>
+                                <li><a id="epie_pot" href="" title="Paint Pot tool"></a></li>
+                                <li><a id="epie_img" href="" title="Image tool"></a></li>
                             </ul>
                         </div>
                     </div>

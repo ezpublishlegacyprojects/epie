@@ -18,6 +18,10 @@ epie.gui.config.bind.tool_rotation_submit = function() {
     $.log("rotation value send : " + angle);
 }
 
+epie.gui.config.bind.tool_rotation_slide = function(value) {
+    $("#optsRotation input[name='angle']").val(value);
+}
+
 epie.gui.config.bind.tool_rotation_preview = function() {
     var angle = $("#optsRotation .slider:first").slider("value");
     $("#optsRotation input[name='angle']").val(angle);
