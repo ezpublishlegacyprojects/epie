@@ -49,7 +49,8 @@
                         'colorpicker/colorpicker.js',
                         'eye.js',
                         'utils.js',
-                        'vtip-min.js')
+                        'vtip-min.js',
+                        'wait.js')
                         )
 }
 
@@ -160,12 +161,12 @@
                         </div>
                         <div class="sectionContent">
                             <ul class="tools">
-                                <li><a id="epie_select" href="" title="Select tool"></a></li>
-                                <li><a id="epie_undo" href="" title="Undo tool"></a></li>
-                                <li><a id="epie_redo" href="" title="Redo tool"></a></li>
-                                <li><a id="epie_zoom" href="" title="Zoom tool"></a></li>
-                                <li><a id="epie_pot" href="" title="Paint Pot tool"></a></li>
-                                <li><a id="epie_img" href="" title="Image tool"></a></li>
+                                <li><a class="vtip" id="epie_select" href="" title="Select tool"></a></li>
+                                <li><a class="vtip" id="epie_undo" href="" title="Undo tool"></a></li>
+                                <li><a class="vtip" id="epie_redo" href="" title="Redo tool"></a></li>
+                                <li><a class="vtip" id="epie_zoom" href="" title="Zoom tool"></a></li>
+                                <li><a class="vtip" id="epie_pot" href="" title="Paint Pot tool"></a></li>
+                                <li><a class="vtip" id="epie_img" href="" title="Image tool"></a></li>
                             </ul>
                         </div>
                     </div>

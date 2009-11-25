@@ -48,6 +48,7 @@ epie.gui.epiegui = function () {
     // varies
     };
 
+    // Undo/Redo states
     var activateUndo = function() {
         $("#epie_undo").parent("li").addClass("active");
     }

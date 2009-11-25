@@ -17,15 +17,15 @@ epie.gui.tools_window = function() {
                 return false;
             });
 
-            /*if (config.shortcut) {
-                $(document).bind('keydown', config.shortcut, function (e){
-                    alert(config.click);
+            if (config.shortcut) {
+                $(config.selector).attr("title", $(config.selector).attr("title") + " (" + config.shortcut + ")");
+                $(document).bind('keydown', config.shortcut, function (e) {
                     config.click();
                     e.stopPropagation( );
                     e.preventDefault( );
                     return false;
                 } );
-            }*/
+            }
 
             if (item.attr('title') != undefined) {
                 var p = item.closest('div.epieBox').find('div.bottomBarContent p')
