@@ -10,7 +10,7 @@
 
 .epieBox * {
     margin:0px;
-    padding:0px;
+    padding:0pxfi;
 }
 
 .drawZone {
@@ -153,6 +153,8 @@
 #epie_zoom { background-image:url("../images/ico/loupe.png") }
 #epie_undo { background-image:url("../images/ico/arrowGreyLeft.png") }
 #epie_redo { background-image:url("../images/ico/arrowGreyRight.png") }
+.active #epie_redo { background-image:url("../images/ico/arrowGreenRight.png") }
+.active #epie_undo { background-image:url("../images/ico/arrowGreenLeft.png") }
 #epie_pot { background-image:url("../images/ico/pot.png") }
 #epie_img { background-image:url("../images/ico/img.png") }
 #epie_rotation_left { background-image:url("../images/ico/rotationLeft.png") }
@@ -168,6 +170,13 @@
 }
 .filters li:hover {
     background:#DFDFDF;
+}
+
+.filters li.more {
+    background:url("../images/arrowSmall.gif") 95% 50% no-repeat;
+}
+.filters li.more:hover {
+    background:#DFDFDF url("../images/arrowSmall.gif") 95% 50% no-repeat;
 }
 
 .section {

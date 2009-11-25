@@ -76,9 +76,6 @@
         <div class="contentLeft"><div class="contentRight">
                 <div class="content" id="resize">
                     <ul class="topMenu">
-                        <!--li><a href="" id="epie_file" title="File"></a></li>
-                        <li><a href="" id="epie_edition" title="Edition"></a></li>
-                        <li><a href="" id="epie_help" title="Help"></a></li-->
                         <li><a href="" id="epie_save_and_close" title="Save and Close this interface">Save & Close</a></li>
                         <li><a href="" id="epie_quit_without_saving" title="Close this interface without saving">Quit</a></li>
                     </ul>
@@ -181,8 +178,8 @@
                                 <!--li><a href="" id="epie_grain" title="Grain">Grain photo</a></li-->
                                 <li><a href="" id="epie_flip_hor" title="Horizontal Flip">Horizontal Flip</a></li>
                                 <li><a href="" id="epie_flip_ver" title="Vertical Flip">Vertical Flip</a></li>
-                                <li><a href="" id="epie_rotation" title="Rotation">Rotation</a></li>
-                                <li><a href="" id="epie_watermark" title="Watermark">Watermark</a></li>
+                                <li class="more"><a href="" id="epie_rotation" title="Rotation">Rotation</a></li>
+                                <li class="more"><a href="" id="epie_watermark" title="Watermark">Watermark</a></li>
                             </ul>
                         </div>
                     </div>
@@ -192,8 +189,8 @@
                         </div>
                         <div class="sectionContent">
                             <ul class="filters">
-                                <li><a href="" id="epie_blur" title="Blur">Blur</a></li>
-                                <li><a href="" id="epie_saturation" title="Saturation">Saturation</a></li>
+                                <li class="more"><a href="" id="epie_blur" title="Blur">Blur</a></li>
+                                <li class="more"><a href="" id="epie_saturation" title="Saturation">Saturation</a></li>
                                 <li><a href="" id="epie_blackandwhite" title="Black and White">Black and White</a></li>
                                 <li><a href="" id="epie_sepia" title="Sepia">Sepia</a></li>
                                 <!--li><a href="" id="epie_levels" title="Levels">Levels</a></li-->

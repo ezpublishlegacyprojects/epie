@@ -2,6 +2,7 @@ epie.gui.config.bindings.opts_items_sliders = [
     {
         'selector':     '#optsBlur .slider',
         'change':       epie.gui.config.bind.filter_blur_preview,
+        'slide':        function(value) {},
         'min' :         0,
         'max' :         25,
         'step' :        1
@@ -45,6 +46,7 @@ epie.gui.config.bindings.opts_items_sliders = [
     {
         'selector':     '#optsSaturation .slider',
         'change':       epie.gui.config.bind.tool_saturation_preview,
+        'slide':        function(value) { epie.gui.config.bind.tool_saturation_slide(value) },
         'min':          -100,
         'max':          100,
         'step' :        1

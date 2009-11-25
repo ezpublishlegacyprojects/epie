@@ -48,6 +48,19 @@ epie.gui.epiegui = function () {
     // varies
     };
 
+    var activateUndo = function() {
+        $("#epie_undo").parent("li").addClass("active");
+    }
+    var desactivateUndo = function() {
+        $("#epie_undo").parent("li").removeClass("active");
+    }
+    var activateRedo = function() {
+        $("#epie_redo").parent("li").addClass("active");
+    }
+    var desactivateRedo = function() {
+        $("#epie_redo").parent("li").removeClass("active");
+    }
+
     var initGUI = function() {
         // global functionnalities & effects
 
@@ -235,7 +248,13 @@ epie.gui.epiegui = function () {
         // returns jQuery dom element of the container of all three windows
         jWindow:getJWindow,
         setImages:setImages,
-        refreshImages:refreshImages
+        refreshImages:refreshImages,
+
+        // ui actions
+        activateUndo:activateUndo,
+        activateRedo:activateRedo,
+        desactivateUndo:desactivateUndo,
+        desactivateRedo:desactivateRedo
     }
 
 };

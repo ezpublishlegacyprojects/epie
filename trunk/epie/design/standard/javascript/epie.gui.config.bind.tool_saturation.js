@@ -16,6 +16,10 @@ epie.gui.config.bind.tool_saturation_submit = function() {
     $.log("saturation value send : " + sat);
 }
 
+epie.gui.config.bind.tool_saturation_slide = function(value) {
+    $("#optsSaturation input[name='saturation']").val(value);
+}
+
 epie.gui.config.bind.tool_saturation_preview = function() {
     var sat = $("#optsSaturation .slider:first").slider("value");
     $("#optsSaturation input[name='saturation']").val(sat);

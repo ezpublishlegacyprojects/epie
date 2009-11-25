@@ -18,6 +18,20 @@ epie.gui.config.bind.tool_rotation_submit = function() {
     $.log("rotation value send : " + angle);
 }
 
+epie.gui.config.tool_rotation = function(angle) {
+    var color = $("#optsRotation input[name='color']").val();
+
+    epie.ezconnect.connect.instance().action({
+        'action': 'tool_rotation',
+        'data': {
+            'angle':angle,
+            'color':color
+        }
+    });
+
+    $.log("rotation value send : " + angle);
+}
+
 epie.gui.config.bind.tool_rotation_slide = function(value) {
     $("#optsRotation input[name='angle']").val(value);
 }

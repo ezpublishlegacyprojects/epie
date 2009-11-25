@@ -60,8 +60,17 @@ epie.epiehistory = function() {
         }
     };
 
+    var hasAntecedent = function() {
+        $.log(history_version);
+        return (history_version > 0);
+    }
+    var hasSuccessor = function() {
+        $.log("history : " + history.length);
+        return (history_version != -1 && history_version + 1 < history.length);
+    }
+
     var refreshItem = function() {
-        if (history_version < 0 || history_version > history.lenght) {
+        if (history_version < 0 || history_version > history.length) {
             return;
         }
 
@@ -93,7 +102,9 @@ epie.epiehistory = function() {
         current:current,
         version:version,
         refreshCurrent:refreshItem,
-        reset:resetHistory
+        reset:resetHistory,
+        hasSuccessor:hasSuccessor,
+        hasAntecedent:hasAntecedent
     };
 };
 
