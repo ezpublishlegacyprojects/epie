@@ -1,7 +1,8 @@
 <?php
 
 class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
-                                                       implements EpIEezcImageRotate {
+                                                       implements EpIEezcImageRotate,
+                                                           EpIEezcImageFlip {
     public function rotate($angle, $background) {
         $angle = intval($angle);
         if ( !is_int($angle) || $angle < 0 || $angle > 360) {
@@ -19,6 +20,14 @@ class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
             '-rotate',
             $angle
         );
+    }
+
+    public function horizontalFlip() {
+        $this->addFilterOption($this->getActiveReference(), '-flip');
+    }
+
+    public function verticalFlip() {
+        $this->addFilterOption($this->getActiveReference(), '-flop');
     }
 }
 
