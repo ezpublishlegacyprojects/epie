@@ -21,7 +21,7 @@ epie.gui.config.bindings.tools_window = [
     },
     {
         'selector':     '#epie_zoom',
-        'click':        epie.gui.config.bind.tool_zoom,
+        'click':        epie.gui.config.bind.tool_zoom_show,
         'shortcut':     'z'
     },
     {

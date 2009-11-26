@@ -33,6 +33,7 @@
                         'epie.gui.config.bind.tool_pixelate.js',
                         'epie.gui.config.bind.tool_rotation.js',
                         'epie.gui.config.bind.tool_levels.js',
+                        'epie.gui.config.bind.tool_zoom.js',
                         'epie.gui.config.bind.opts_attach.js',
                         'epie.gui.config.bind.opts_detach.js',
                         'epie.gui.config.zoom.js',
@@ -56,7 +57,6 @@
                         'wait.js')
                         )
 }
-
 
 {ezcss_require( array(  'epie.css',
                         'slider.css',
@@ -118,8 +118,8 @@
                                 <li><a id="epie_rotation_left" class="vtip" title="90° counter-clockwise rotation" href="#"></a></li>
                                 <li><a id="epie_rotation_right" class="vtip" title="90° clockwise rotation" href="#"></a></li>
                             </ul>
-                                <label><input type="radio" name="clockwise"  value="yes" checked="checked" />Clockwise</label>
-                                <label><input type="radio" name="clockwise" value="no"  />Counter-clockwise</label>
+                            <label for="cw"><input id="cw" type="radio" name="clockwise"  value="yes" checked="checked" />Clockwise</label>
+                            <label for="ccw"><input id="ccw" type="radio" name="clockwise" value="no"  />Counter-clockwise</label>
                             <input type="hidden" name="color" value="FFFFFF" />
                             <div id="colorSelector"><div style="background-color: #ffffff"></div></div>
                             <button type="button">Ok</button>
@@ -139,6 +139,15 @@
                             <div class="slider"></div>
                             <input type="text" name="saturation" value="0" />
                             <button type="button">Ok</button>
+                        </div>
+                        <div id="optsZoom" class="opts">
+                            <div class="topMenu"><h2>Zoom</h2></div>
+                            <ul class="tools">
+                                <li class="current"><a id="zoomIn" href="#"></a></li>
+                                <li><a id="zoomOut" href="#"></a></li>
+                            </ul>
+                            <button id="actualPixels">Actual pixels</button>
+                            <button id="fitOnScreen">Fit on screen</button>
                         </div>
                     </div>
                 </div>
@@ -171,7 +180,7 @@
                                 <li><a class="vtip" id="epie_select" href="" title="Select tool"></a></li>
                                 <li><a class="vtip" id="epie_undo" href="" title="Undo tool"></a></li>
                                 <li><a class="vtip" id="epie_redo" href="" title="Redo tool"></a></li>
-                                <li><a class="vtip" id="epie_zoom" href="" title="Zoom tool"></a></li>
+                                <li class="current"><a class="vtip" id="epie_zoom" href="" title="Zoom tool"></a></li>
                                 <li><a class="vtip" id="epie_pot" href="" title="Paint Pot tool"></a></li>
                                 <li><a class="vtip" id="epie_img" href="" title="Image tool"></a></li>
                             </ul>

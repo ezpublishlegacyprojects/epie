@@ -31,7 +31,27 @@ epie.gui.config.zoom_impl = function() {
         currentZoom = zoom;
         jImgBlock.css('height', (zoom * realHeight / 100) + 'px');
         jImgBlock.css('width', (zoom * realWidth / 100) + 'px');
-                $.log('new zoom = ' + zoom);
+        $.log('new zoom = ' + zoom);
+    }
+
+    var zoomAt = function(zoom) {
+        $.log(jImgBlock.height())
+        jImgBlock.css({
+            'height':    jImgBlock.height() * zoom / 100,
+            'width':     jImgBlock.width() * zoom / 100
+        });
+    }
+
+    var fitScreen = function () {
+        jImgBlock.css({
+            'width': '100%',
+            'height': '100%'
+        });
+        if (realWidth / (jImgBlock.width() - 2) >= realHeight / (jImgBlock.height() - 2)) {
+            this.fitWidth();
+        } else {
+            this.fitHeight();
+        }
     }
 
     var getZoom = function() {
@@ -57,7 +77,9 @@ epie.gui.config.zoom_impl = function() {
         reset:reset,
         fitWidth:fitWidth,
         fitHeight:fitHeight,
+        fitScreen:fitScreen,
         zoom:setZoom,
+        zoomAt:zoomAt,
         get:getZoom
     };
 }

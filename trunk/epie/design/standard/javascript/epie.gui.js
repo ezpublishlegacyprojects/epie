@@ -81,7 +81,6 @@ epie.gui.epiegui = function () {
             }
         });
 
-
         $(".closed").parent(".sectionHeader").next(".sectionContent").hide();
         // TODO: move this
         $(".sectionHeader h4").click(function() {
@@ -161,6 +160,11 @@ epie.gui.epiegui = function () {
                 $('#colorSelector div').css('backgroundColor', '#' + hex);
                 $("#optsRotation input[name='color']").val(hex);
             }
+        });
+
+        $(".tools li a").click(function() {
+            $(this).closest(".tools").find("li").removeClass("current");
+            $(this).parent("li").addClass("current");
         });
     };
 

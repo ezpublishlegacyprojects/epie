@@ -137,6 +137,9 @@
 #optsRotation .tools {
     padding:0px 10px;
 }
+#optsZoom .tools {
+    padding:10px 10px 3px;
+}
 
 #optsRotation label,
 #optsRotation label input{
@@ -147,6 +150,10 @@
 
 #optsRotation label input{
     margin-right: 2px;
+}
+
+.tools a:focus {
+    outline:0;
 }
 
 .tools {
@@ -170,8 +177,12 @@
     background:no-repeat center center;
 }
 
+.tools li.current {
+    background:url("../images/iconBgOn.png") no-repeat;
+}
+
 #epie_select { background-image:url("../images/ico/selection.png")}
-#epie_zoom { background-image:url("../images/ico/loupe.png") }
+#epie_zoom { background-image:url("../images/ico/zoom.png") }
 #epie_undo { background-image:url("../images/ico/arrowGreyLeft.png") }
 #epie_redo { background-image:url("../images/ico/arrowGreyRight.png") }
 .active #epie_redo { background-image:url("../images/ico/arrowGreenRight.png") }
@@ -181,6 +192,8 @@
 #epie_rotation_left { background-image:url("../images/ico/rotationLeft.png") }
 #epie_rotation_right { background-image:url("../images/ico/rotationRight.png") }
 
+#zoomIn { background-image:url("../images/ico/zoomIn.png") }
+#zoomOut { background-image:url("../images/ico/zoomOut.png") }
 
 .filters {
 }
@@ -361,6 +374,7 @@
     margin-left:7px;
     border:none;
     cursor:pointer;
+    font-size:0.6875em;
 }
 .opts button:active {
     background:url("../images/validationButtonActive.png") no-repeat;
