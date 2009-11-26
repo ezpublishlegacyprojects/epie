@@ -4,12 +4,21 @@ include_once 'kernel/common/template.php';
 
 $prepare_action = new EpIEImagePreAction();
 
-EpIEImageToolFlipHor::toolFlipHor($prepare_action->getAbsoluteImagePath(),
-    $prepare_action->getAbsoluteNewImagePath()
-);
-EpIEImageToolFlipHor::toolFlipHor($prepare_action->getAbsoluteThumbnailPath(),
-    $prepare_action->getAbsoluteNewThumbnailPath()
-);
+//EpIEImageToolFlipHor::toolFlipHor($prepare_action->getAbsoluteImagePath(),
+//    $prepare_action->getAbsoluteNewImagePath()
+//);
+//EpIEImageToolFlipHor::toolFlipHor($prepare_action->getAbsoluteThumbnailPath(),
+//    $prepare_action->getAbsoluteNewThumbnailPath()
+//);
+
+
+$imageconverter = new EpIEezcImageConverter(EpIEImageToolFlipHor::filter());
+
+$imageconverter->perform($prepare_action->getAbsoluteImagePath(),
+    $prepare_action->getAbsoluteNewImagePath());
+
+$imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
+    $prepare_action->getAbsoluteNewThumbnailPath());
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());

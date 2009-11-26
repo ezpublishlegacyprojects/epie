@@ -20,6 +20,13 @@ class EpIEImageToolFlipVer extends EpIEImageAction {
             return false;
         }
     }
+
+
+    static function filter() {
+        return (array(new ezcImageFilter(
+        'verticalFlip',
+        array())));
+    }
 }
 
 ?>
