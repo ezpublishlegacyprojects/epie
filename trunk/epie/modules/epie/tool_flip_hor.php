@@ -4,14 +4,6 @@ include_once 'kernel/common/template.php';
 
 $prepare_action = new EpIEImagePreAction();
 
-//EpIEImageToolFlipHor::toolFlipHor($prepare_action->getAbsoluteImagePath(),
-//    $prepare_action->getAbsoluteNewImagePath()
-//);
-//EpIEImageToolFlipHor::toolFlipHor($prepare_action->getAbsoluteThumbnailPath(),
-//    $prepare_action->getAbsoluteNewThumbnailPath()
-//);
-
-
 $imageconverter = new EpIEezcImageConverter(EpIEImageToolFlipHor::filter());
 
 $imageconverter->perform($prepare_action->getAbsoluteImagePath(),

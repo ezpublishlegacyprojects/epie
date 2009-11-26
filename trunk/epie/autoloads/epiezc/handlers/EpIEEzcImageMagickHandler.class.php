@@ -2,7 +2,8 @@
 
 class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
                                                        implements EpIEezcImageRotate,
-                                                           EpIEezcImageFlip {
+                                                           EpIEezcImageFlip,
+                                                           EpIEezcImagePixelate{
     public function rotate($angle, $background) {
         $angle = intval($angle);
         if ( !is_int($angle) || $angle < 0 || $angle > 360) {
@@ -28,6 +29,29 @@ class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
 
     public function verticalFlip() {
         $this->addFilterOption($this->getActiveReference(), '-flop');
+    }
+
+    public function pixelate1() {
+        $this->addFilterOption($this->getActiveRegerence(),
+            '-resize',
+            '10%'
+        );
+        $this->addFilterOption($this->getActiveRegerence(),
+            '-resize',
+            '1000%'
+        );
+
+    }
+    public function pixelate() {
+        $this->addFilterOption($this->getActiveRegerence(),
+            '-resize',
+            '10%'
+        );
+        $this->addFilterOption($this->getActiveRegerence(),
+            '-resize',
+            '1000%'
+        );
+
     }
 }
 

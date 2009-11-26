@@ -2,7 +2,8 @@
 
 class EpIEEzcGDHandler extends ezcImageGdHandler
 implements EpIEezcImageRotate,
-EpIEezcImageFlip {
+EpIEezcImageFlip,
+EpIEezcImagePixelate {
 
     private function bgArrayFromHex($hex) {
         return array(
@@ -80,6 +81,50 @@ EpIEezcImageFlip {
         }
 
         imagedestroy( $resource );
+        $this->setActiveResource( $newResource );
+    }
+
+    public function pixelate() {
+        $resource = $this->getActiveResource();
+
+        $w = imagesx($resource);
+        $h =  imagesy($resource);
+
+        $tmp_w = $w / 10;
+        $tmp_h = $h / 10;
+
+        $tmpResource = imagecreatetruecolor($tmp_w, $tmp_h);
+
+        imagealphablending($tmpResource, false);
+        imagesavealpha($tmpResource, true);
+
+        $res = imagecopyresampled($tmpResource, $resource,
+            0, 0,
+            0, 0,
+            $tmp_w, $tmp_h,
+            $w, $h);
+
+        if ( $res === false ) {
+            throw new ezcImageFilterFailedException( 'pixelate', 'First part of pixelate failed.' );
+        }
+        imagedestroy($resource);
+
+        $newResource = imagecreatetruecolor($w, $h);
+
+        imagealphablending($newResource, false);
+        imagesavealpha($newResource, true);
+
+        $res = imagecopyresampled($newResource, $tmpResource, 
+            0, 0,
+            0, 0,
+            $w, $h,
+            $tmp_w, $tmp_h);
+
+        if ( $res === false ) {
+            throw new ezcImageFilterFailedException( 'pixelate', 'Second part of pixelate failed.' );
+        }
+
+        imagedestroy( $tmpResource );
         $this->setActiveResource( $newResource );
     }
 

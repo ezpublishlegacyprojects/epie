@@ -29,6 +29,7 @@
                         'epie.gui.config.bind.tool_select.js',
                         'epie.gui.config.bind.tool_undo.js',
                         'epie.gui.config.bind.tool_watermark.js',
+                        'epie.gui.config.bind.tool_pixelate.js',
                         'epie.gui.config.bind.tool_rotation.js',
                         'epie.gui.config.bind.tool_levels.js',
                         'epie.gui.config.bind.opts_attach.js',
@@ -193,6 +194,7 @@
                         <div class="sectionContent">
                             <ul class="filters">
                                 <li class="more"><a href="" id="epie_blur" title="Blur">Blur</a></li>
+                                <li class="more"><a href="" id="epie_pixelate" title="Pixelate">Pixelate</a></li>
                                 <li class="more"><a href="" id="epie_saturation" title="Saturation">Saturation</a></li>
                                 <li><a href="" id="epie_blackandwhite" title="Black and White">Black and White</a></li>
                                 <li><a href="" id="epie_sepia" title="Sepia">Sepia</a></li>

@@ -79,4 +79,9 @@ epie.gui.config.bindings.tools_window = [
         'click':         epie.gui.config.bind.tool_levels_show,
         'shortcut':      '1'
     },
+    {
+        'selector':     '#epie_pixelate',
+        'click':        epie.gui.config.bind.tool_pixelate,
+        'shortcut': null
+    }
     ];
