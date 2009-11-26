@@ -44,7 +44,7 @@ epie.ezconnect.connect = function() {
             'image_id': ezdata.image_id,
             'image_version': ezdata.image_version,
             'history_version': ezdata.history_version,
-            'module_url': ezdata.module_url
+            'module_url': ezdata.module_url,
         };
 
         $.extend(settings, options);
@@ -73,7 +73,16 @@ epie.ezconnect.connect = function() {
             settings.data = {}
         }
         $.extend(settings.data, ezdata);
+
+        if (epie.gui.selection().hasSelection()) {
+            var zoom = epie.gui.config.zoom().get();
+            var selection = epie.gui.selection().arrayZoomedSelection(zoom);
+
+            $.extend(settings.data, selection);
+        }
+
         epie.gui.epiegui.getInstance().main().showLoading();
+
         $.ajax(settings);
     }
 

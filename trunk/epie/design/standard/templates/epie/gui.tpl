@@ -11,6 +11,7 @@
                         'epie.ezconnect.prepare.js',
                         'epie.history.js',
                         'epie.gui.js',
+                        'epie.gui.selection.js',
                         'epie.gui.config.bind.filter_black_and_white.js',
                         'epie.gui.config.bind.filter_blur.js',
                         'epie.gui.config.bind.filter_sepia.js',
@@ -46,7 +47,7 @@
                         'epie.gui.config.bindings.opts_window.js',
                         'epie.gui.config.bindings.variations_bar.js',
                         'jquery.epie.js',
-                        'jquery.imgareaselect.min.js',
+                        'jquery.jCrop.min.js',
                         'jquery.hotkeys.js',
                         'colorpicker/colorpicker.js',
                         'eye.js',
@@ -62,7 +63,8 @@
                         'imgareaselect-animated.css',
                         'variation.css',
                         'colorpicker.css',
-                        'vtip.css') )}
+                        'vtip.css',
+                        'jquery.Jcrop.css',) )}
 
 <div id="epieMainContainer">
     <div class="epieBox drawZone" id="epieMainWindow">
@@ -196,7 +198,7 @@
                         <div class="sectionContent">
                             <ul class="filters">
                                 <li class="more"><a href="" id="epie_blur" title="Blur">Blur</a></li>
-                                <li class="more"><a href="" id="epie_pixelate" title="Pixelate">Pixelate</a></li>
+                                <li><a href="" id="epie_pixelate" title="Pixelate">Pixelate</a></li>
                                 <li class="more"><a href="" id="epie_saturation" title="Saturation">Saturation</a></li>
                                 <li><a href="" id="epie_blackandwhite" title="Black and White">Black and White</a></li>
                                 <li><a href="" id="epie_sepia" title="Sepia">Sepia</a></li>

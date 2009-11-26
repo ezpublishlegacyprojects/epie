@@ -1,7 +1,8 @@
 epie.gui.config.bind.tool_select = function() {
-//    img = epie.gui.epiegui.getInstance().main().jWindow().find("#grid img:first");
-//
-//    img.imgAreaSelect({
-//       handles: true
-//    });
+    img = $("#main_image img:first");
+
+    img.Jcrop({
+        onSelect: epie.gui.selection().set,
+        onChange: epie.gui.selection().set
+    });
 }

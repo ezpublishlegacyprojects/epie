@@ -28,9 +28,14 @@ epie.gui.config.zoom_impl = function() {
     }
 
     var setZoom = function(zoom) {
+        currentZoom = zoom;
         jImgBlock.css('height', (zoom * realHeight / 100) + 'px');
         jImgBlock.css('width', (zoom * realWidth / 100) + 'px');
                 $.log('new zoom = ' + zoom);
+    }
+
+    var getZoom = function() {
+        return currentZoom;
     }
 
     var fitWidth = function() {
@@ -52,7 +57,8 @@ epie.gui.config.zoom_impl = function() {
         reset:reset,
         fitWidth:fitWidth,
         fitHeight:fitHeight,
-        zoom:setZoom
+        zoom:setZoom,
+        get:getZoom
     };
 }
 
