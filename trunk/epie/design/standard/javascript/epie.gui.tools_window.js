@@ -11,7 +11,7 @@ epie.gui.tools_window = function() {
     var setBinds = function () {
         $.each(epie.gui.config.bindings.tools_window, function() {
             var config = this;
-            item = $(config.selector)
+            var item = $(config.selector);
             item.click(function () {
                 config.click();
                 return false;

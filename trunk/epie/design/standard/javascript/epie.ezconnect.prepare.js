@@ -5,10 +5,6 @@ epie.ezconnect.prepare = function (prepare_url) {
     epie.ezconnect.connect.instance().prepare({
         'url': prepare_url,
         'success': function(response) {
-            // TODO: check that the response is an actual JSON
-            // otherwise, display a message that advises to remove the debug
-            // mode
-
             $.log('image prepared, now binding');
             $.log('type of response : ' + (typeof response));
             // We achieve setting the values for epie.ezconnect
@@ -21,6 +17,7 @@ epie.ezconnect.prepare = function (prepare_url) {
             });
 
             epie.gui.epiegui.getInstance().setImages(response.image_url, response.thumbnail_url);
+            epie.gui.config.zoom().init();
         },
         'complete': function() {
             epie.gui.epiegui.getInstance().main().hideLoading();

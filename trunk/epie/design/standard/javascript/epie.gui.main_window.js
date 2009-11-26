@@ -11,7 +11,7 @@ epie.gui.main_window = function() {
     var setBinds = function () {
         $.each(epie.gui.config.bindings.main_window, function() {
             var config = this;
-            item = $(config.selector);
+            var item = $(config.selector);
 
             item.click(function () {
                 config.click();
@@ -56,7 +56,8 @@ epie.gui.main_window = function() {
         if (currentImage) {
             img = $("<img></img>").attr("src", currentImage.image + "?" + currentImage.mixed)
             .attr("alt", "");
-            jWindow.find("#grid").html(img);
+            jWindow.find("#main_image").html(img);
+            
         }
     }
 

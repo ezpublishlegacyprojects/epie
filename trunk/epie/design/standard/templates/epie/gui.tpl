@@ -34,6 +34,7 @@
                         'epie.gui.config.bind.tool_levels.js',
                         'epie.gui.config.bind.opts_attach.js',
                         'epie.gui.config.bind.opts_detach.js',
+                        'epie.gui.config.zoom.js',
                         'epie.gui.main_window.js',
                         'epie.gui.tools_window.js',
                         'epie.gui.opts_window.js',
@@ -82,7 +83,8 @@
                         <li><a href="" id="epie_quit_without_saving" title="Close this interface without saving">Quit</a></li>
                     </ul>
                     <div id="grid">
-
+                        <span id="main_image">
+                        </span>
                     </div>
                     <div id="sideBar" class="detachBox">
                         <div class="topMenu">

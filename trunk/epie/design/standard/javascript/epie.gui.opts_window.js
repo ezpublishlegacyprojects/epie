@@ -11,7 +11,7 @@ epie.gui.opts_window = function() {
     var setBindsForSliders = function () {
         $.each(epie.gui.config.bindings.opts_items_sliders, function() {
             var config = this;
-            item = $(config.selector);
+            var item = $(config.selector);
 
             item.slider({
                 min:config.min,
@@ -31,7 +31,7 @@ epie.gui.opts_window = function() {
     var setBindsForButtons = function () {
         $.each(epie.gui.config.bindings.opts_items_buttons, function() {
             var config = this;
-            item = $(config.selector);
+            var item = $(config.selector);
             item.click(function() {
                 config.click();
                 return false;

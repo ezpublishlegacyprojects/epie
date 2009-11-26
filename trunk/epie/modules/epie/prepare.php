@@ -51,6 +51,9 @@ $working_folder_absolute_path . "/" . $thumb,
 250, 250))
     eZDebug::writeDebug(null, "Error while creating thumbnail");
 
+// TODO: retrieve image dimensions
+$ezcanalyzer = new ezcImageAnalyzer($working_folder_path . "/" . $file);
+
 $tpl = templateInit();
 $tpl->setVariable("result", array( 'original' => $working_folder_path . "/" . $file,
                                    'thumbnail' => $working_folder_path . "/" . $thumb,
@@ -59,7 +62,9 @@ $tpl->setVariable("result", array( 'original' => $working_folder_path . "/" . $f
                                    'image_id' => $NodeId,
                                    'image_version' => $Version,
                                    'history_version' => 0,
-                                   'module_path' => 'epie'
+                                   'module_path' => 'epie',
+                                   'image_width' => $ezcanalyzer->data->width,
+                                   'image_height' => $ezcanalyzer->data->height,
                                  ));
 
 $Result = array();

@@ -10,7 +10,7 @@
 
 .epieBox * {
     margin:0px;
-    padding:0pxfi;
+    padding:0px;
 }
 
 .drawZone {
@@ -80,7 +80,7 @@
 }
 
 .content {
-    background:url("../images/editorBg.png");
+    background: #CACACA;
     position:relative;
 }
 
@@ -88,6 +88,16 @@
     height:370px;
     margin-right:161px;
     overflow:scroll;
+    text-align: center;
+}
+
+#main_image {
+    background: url(../images/editorBg.png);
+    border: 1px solid #505050;
+    display: inline-block;
+}
+
+#main_image img {
 }
 
 .topMenu {
