@@ -4,11 +4,13 @@ include_once 'kernel/common/template.php';
 
 $prepare_action = new EpIEImagePreAction();
 
-EpIEImageFilterSepia::filterSepia($prepare_action->getAbsoluteImagePath(),
+$imageconverter = new EpIEezcImageConverter(EpIEImageFilterSepia::filter());
+
+$imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath()
 );
 
-EpIEImageFilterSepia::filterSepia($prepare_action->getAbsoluteThumbnailPath(),
+$imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
     $prepare_action->getAbsoluteNewThumbnailPath()
 );
 

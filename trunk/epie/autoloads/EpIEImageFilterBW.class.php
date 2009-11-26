@@ -1,6 +1,7 @@
 <?php
 
 class EpIEImageFilterBW extends EpIEImageAction {
+    // TODO: remove once the version bellow has been correctly tested
     static function filterBW($src_file, $dst_file) {
 
         $phpthumb = new phpthumb();
@@ -19,6 +20,14 @@ class EpIEImageFilterBW extends EpIEImageAction {
             eZDebug::writeDebug("", "phpthumb debug : " . $phpthumb->debugmessages);
             return false;
         }
+    }
+
+    static function filter() {
+        return (array(new ezcImageFilter(
+        'colorspace',
+        array(
+        'space' => ezcImageColorspaceFilters::COLORSPACE_GREY,
+        ))));
     }
 }
 

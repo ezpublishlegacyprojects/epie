@@ -2,7 +2,6 @@
 
 class EpIEImageToolRotation extends EpIEImageAction {
     static function toolRotation($src_file, $dst_file, $angle = 0, $bgColor = 'FFFFFF') {
-
 //        $phpthumb = new phpthumb();
 //        $phpthumb->setSourceFilename($src_file);
 //
@@ -21,7 +20,15 @@ class EpIEImageToolRotation extends EpIEImageAction {
 //            return false;
 //        }
 
+    }
 
+    static function filter($angle, $bgColor = 'FFFFFF') {
+        return array(new ezcImageFilter(
+        'rotate',
+        array(
+            'angle' => $angle,
+            'background' => $bgColor
+        )));
     }
 }
 

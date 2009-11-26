@@ -6,12 +6,19 @@ epie.gui.config.bind.tool_rotation_show = function() {
 epie.gui.config.bind.tool_rotation_submit = function() {
     var angle = $("#optsRotation input[name='angle']").val();
     var color = $("#optsRotation input[name='color']").val();
+    var cw = $("#optsRotation input[name='clockwise']:first").attr('checked');
+    if (cw) {
+        cw = "yes";
+    } else {
+        cw = 'no';
+    }
 
     epie.ezconnect.connect.instance().action({
         'action': 'tool_rotation',
         'data': {
             'angle':angle,
-            'color':color
+            'color':color,
+            'clockwise': cw
         }
     });
 

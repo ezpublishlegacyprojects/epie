@@ -110,9 +110,11 @@
                             <div class="slider"></div>
                             <input type="text" name="angle" value="0" />
                             <ul class="tools">
-                                <li><a id="epie_rotation_left" class="vtip" title="Rotation 90° antihoraire" href="#"></a></li>
-                                <li><a id="epie_rotation_right" class="vtip" title="Rotation 90° horaire" href="#"></a></li>
+                                <li><a id="epie_rotation_left" class="vtip" title="90° counter-clockwise rotation" href="#"></a></li>
+                                <li><a id="epie_rotation_right" class="vtip" title="90° clockwise rotation" href="#"></a></li>
                             </ul>
+                                <label><input type="radio" name="clockwise"  value="yes" checked="checked" />Clockwise</label>
+                                <label><input type="radio" name="clockwise" value="no"  />Counter-clockwise</label>
                             <input type="hidden" name="color" value="FFFFFF" />
                             <div id="colorSelector"><div style="background-color: #ffffff"></div></div>
                             <button type="button">Ok</button>

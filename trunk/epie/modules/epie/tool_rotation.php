@@ -18,13 +18,17 @@ if ($http->hasVariable("color")) { // TODO: change hasvariable to haspostvariabl
     $color = 'FFFFFF';
 }
 
+if ($http->hasVariable("clockwise") && $http->variable('clockwise') == 'yes') { // TODO: change hasvariable to haspostvariable
+    $angle = 360 - intval($angle);
+}
 
-EpIEImageToolRotation::toolRotation($prepare_action->getAbsoluteImagePath(),
-    $prepare_action->getAbsoluteNewImagePath(), $angle, $color
-);
-EpIEImageToolRotation::toolRotation($prepare_action->getAbsoluteThumbnailPath(),
-    $prepare_action->getAbsoluteNewThumbnailPath(), $angle, $color
-);
+$imageconverter = new EpIEezcImageConverter(EpIEImageToolRotation::filter($angle, $color));
+
+$imageconverter->perform($prepare_action->getAbsoluteImagePath(),
+    $prepare_action->getAbsoluteNewImagePath());
+
+$imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
+    $prepare_action->getAbsoluteNewThumbnailPath());
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());
@@ -32,6 +36,4 @@ $tpl->setVariable("result", $prepare_action->responseArray());
 $Result = array();
 $Result["pagelayout"] = false;
 $Result["content"] = $tpl->fetch("design:epie/ajax_responses/default_action_response.tpl");
-
-
 ?>

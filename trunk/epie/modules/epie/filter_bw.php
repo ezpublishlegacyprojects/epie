@@ -4,12 +4,16 @@ include_once 'kernel/common/template.php';
 
 $prepare_action = new EpIEImagePreAction();
 
-EpIEImageFilterBW::filterBW($prepare_action->getAbsoluteImagePath(),
+$imageconverter = new EpIEezcImageConverter(EpIEImageFilterBW::filter());
+
+$imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath()
 );
-EpIEImageFilterBW::filterBW($prepare_action->getAbsoluteThumbnailPath(),
+
+$imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
     $prepare_action->getAbsoluteNewThumbnailPath()
 );
+
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());
 
