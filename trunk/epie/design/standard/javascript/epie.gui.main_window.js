@@ -53,10 +53,11 @@ epie.gui.main_window = function() {
 
     var updateImage = function() {
         var currentImage = epie.history().current();
-
-        img = $("<img></img>").attr("src", currentImage.image + "?" + currentImage.mixed)
-        .attr("alt", "");
-        jWindow.find("#grid").html(img);
+        if (currentImage) {
+            img = $("<img></img>").attr("src", currentImage.image + "?" + currentImage.mixed)
+            .attr("alt", "");
+            jWindow.find("#grid").html(img);
+        }
     }
 
     var showLoading = function() {

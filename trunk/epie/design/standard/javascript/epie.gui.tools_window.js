@@ -18,7 +18,7 @@ epie.gui.tools_window = function() {
             });
 
             if (config.shortcut) {
-                $(config.selector).attr("title", $(config.selector).attr("title") + " (" + config.shortcut + ")");
+                item.attr("title", item.attr("title") + " (" + config.shortcut + ")");
                 $(document).bind('keydown', config.shortcut, function (e) {
                     config.click();
                     e.stopPropagation( );
