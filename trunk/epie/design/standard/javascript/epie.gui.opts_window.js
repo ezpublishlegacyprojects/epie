@@ -18,7 +18,9 @@ epie.gui.opts_window = function() {
                 max:config.max,
                 step:config.step,
                 change:function () {
-                    config.change();
+                    if (!epie.gui.epiegui.getInstance().isFrozen()) {
+                        config.change();
+                    }
                     return false;
                 },
                 slide:function(event, ui) {
@@ -33,7 +35,9 @@ epie.gui.opts_window = function() {
             var config = this;
             var item = $(config.selector);
             item.click(function() {
-                config.click();
+                if (!epie.gui.epiegui.getInstance().isFrozen()) {
+                    config.click();
+                }
                 return false;
             });
         });
@@ -58,6 +62,13 @@ epie.gui.opts_window = function() {
             jWindow = $("#sideBar");
     }
 
+    var freeze = function() {
+        $("button").freeze();
+    }
+    var unfreeze = function() {
+        $("button").unfreeze();
+    }
+
     var hide = function () {
         if (initialized)
             jWindow.fadeOut('fast');
@@ -77,6 +88,7 @@ epie.gui.opts_window = function() {
             init();
         }
         jWindow.fadeIn('fast');
+        showOpts("#optsZoom");
     }
 
     var updateImage = function() {
@@ -94,6 +106,8 @@ epie.gui.opts_window = function() {
         hide:hide,
         showOpts:showOpts,
         switchjWindow:switchjWindow,
-        updateImage:updateImage
+        updateImage:updateImage,
+        freeze:freeze,
+        unfreeze:unfreeze
     };
 };

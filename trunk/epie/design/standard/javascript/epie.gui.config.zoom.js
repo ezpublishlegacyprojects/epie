@@ -34,8 +34,10 @@ epie.gui.config.zoom_impl = function() {
 
         currentZoom = zoom;
 
-        jImgBlock.css('height', (zoom * realHeight / 100) + 'px');
-        jImgBlock.css('width', (zoom * realWidth / 100) + 'px');
+        jImgBlock.css({
+            'height': (zoom * realHeight / 100) + 'px',
+            'width': (zoom * realWidth / 100) + 'px'
+        });
         $.log('new zoom = ' + zoom);
     }
 
@@ -46,7 +48,8 @@ epie.gui.config.zoom_impl = function() {
     }
 
     var fitScreen = function () {
-        if (realWidth >= realHeight) {
+        var grid = $("#grid");
+        if (realWidth / grid.width() >= realHeight / grid.height()) {
             fitWidth();
         } else {
             fitHeight();

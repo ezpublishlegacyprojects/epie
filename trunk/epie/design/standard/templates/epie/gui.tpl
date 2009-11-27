@@ -177,12 +177,11 @@
                         </div>
                         <div class="sectionContent">
                             <ul class="tools">
-                                <li><a class="vtip" id="epie_select" href="" title="Select tool"></a></li>
-                                <li><a class="vtip" id="epie_undo" href="" title="Undo tool"></a></li>
-                                <li><a class="vtip" id="epie_redo" href="" title="Redo tool"></a></li>
-                                <li class="current"><a class="vtip" id="epie_zoom" href="" title="Zoom tool"></a></li>
-                                <li><a class="vtip" id="epie_pot" href="" title="Paint Pot tool"></a></li>
-                                <li><a class="vtip" id="epie_img" href="" title="Image tool"></a></li>
+                                <li><a class="vtip" id="epie_select" href="" title="Select"></a></li>
+                                <li class="less"><a class="vtip" id="epie_undo" href="" title="Undo"></a></li>
+                                <li class="less"><a class="vtip" id="epie_redo" href="" title="Redo"></a></li>
+                                <li class="current"><a class="vtip" id="epie_zoom" href="" title="Zoom"></a></li>
+                                <li><a class="vtip" id="epie_pot" href="" title="Paint Pot"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -202,7 +201,7 @@
                     </div>
                     <div class="section">
                         <div class="sectionHeader">
-                            <h4 class="closed">Effects</h4>
+                            <h4>Effects</h4>
                         </div>
                         <div class="sectionContent">
                             <ul class="filters">

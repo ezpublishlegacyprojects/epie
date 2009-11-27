@@ -33,6 +33,13 @@ epie.gui.main_window = function() {
 
     };
 
+    var freeze = function() {
+        $("#grid span").freeze();
+    }
+    var unfreeze = function() {
+        $("#grid span").unfreeze();
+    }
+
     var init = function() {
         setBinds();
         jWindow = $("#epieMainWindow");
@@ -74,6 +81,8 @@ epie.gui.main_window = function() {
         hide:hide,
         updateImage:updateImage,
         hideLoading:hideLoading,
-        showLoading:showLoading
+        showLoading:showLoading,
+        freeze:freeze,
+        unfreeze:unfreeze
     };
 };

@@ -177,7 +177,7 @@
     background:no-repeat center center;
 }
 
-.tools li.current {
+.tools li.current, .tools li.click {
     background:url("../images/iconBgOn.png") no-repeat;
 }
 
@@ -209,6 +209,10 @@
 .filters li.more {
     background:url("../images/arrowSmall.gif") 95% 50% no-repeat;
 }
+.filters li.current {
+    background-color:#C2E0EF;
+}
+
 .filters li.more:hover {
     background:#DFDFDF url("../images/arrowSmall.gif") 95% 50% no-repeat;
 }
@@ -384,10 +388,10 @@
 }
 
 #loadingBar {
-    height:13px;
-    width:208px;
+    height:19px;
+    width:220px;
     background:url("../images/loading.gif") no-repeat;
     position:absolute;
     right:17px;
-    top:6px;
+    top:3px;
 }

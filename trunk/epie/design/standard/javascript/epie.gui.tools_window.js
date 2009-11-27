@@ -13,16 +13,22 @@ epie.gui.tools_window = function() {
             var config = this;
             var item = $(config.selector);
             item.click(function () {
-                config.click();
+                if (!epie.gui.epiegui.getInstance().isFrozen()) {
+                    config.click();
+                }
                 return false;
+
             });
 
             if (config.shortcut) {
                 item.attr("title", item.attr("title") + " (" + config.shortcut + ")");
                 $(document).bind('keydown', config.shortcut, function (e) {
-                    config.click();
-                    e.stopPropagation( );
-                    e.preventDefault( );
+                    if (!epie.gui.epiegui.getInstance().isFrozen()) {
+                        config.click();
+                        e.stopPropagation( );
+                        e.preventDefault( );
+                    }
+
                     return false;
                 } );
             }
@@ -48,6 +54,13 @@ epie.gui.tools_window = function() {
         initialized = true;
     };
 
+    var freeze = function() {
+        $(".filters").add(".tools").freeze();
+    }
+    var unfreeze = function() {
+        $(".filters").add(".tools").unfreeze();
+    }
+
     var hide = function () {
         jWindow.fadeOut('fast');
     };
@@ -62,6 +75,8 @@ epie.gui.tools_window = function() {
     return {
         jWindow:getJWindow,
         show:show,
-        hide:hide
+        hide:hide,
+        freeze:freeze,
+        unfreeze:unfreeze
     };
 };

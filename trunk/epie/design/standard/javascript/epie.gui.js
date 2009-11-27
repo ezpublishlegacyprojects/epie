@@ -9,6 +9,20 @@ epie.gui.epiegui = function () {
     var variationsBar = null;
     var jWindow = null;
     var initialized = false;
+    var freeze = false;
+
+    var isFrozen = function () {
+        return freeze;
+    };
+
+    var setFreeze = function (frozen) {
+        freeze = frozen;
+        if (freeze) {
+            freezeGUI();
+        } else {
+            unfreezeGUI();
+        }
+    };
 
     var hide = function() {
         jWindow.fadeOut('fast');
@@ -27,6 +41,18 @@ epie.gui.epiegui = function () {
         hide();
     };
 
+    var freezeGUI = function () {
+        toolWindow.freeze();
+        optsWindow.freeze();
+        mainWindow.freeze();
+    }
+
+    var unfreezeGUI = function () {
+        toolWindow.unfreeze();
+        optsWindow.unfreeze();
+        mainWindow.unfreeze();
+    }
+
     var closeGUI = function() {
         hideGUI();
     }
@@ -38,14 +64,6 @@ epie.gui.epiegui = function () {
         variationsBar.show();
 
         show();
-    };
-
-    var initBinds = function() {
-    // tools and main windows binds are intialized the first time
-    // the show method is called on them
-    //
-    // For opts window, the binds need to be set differently since the content
-    // varies
     };
 
     // Undo/Redo states
@@ -122,11 +140,11 @@ epie.gui.epiegui = function () {
         });
 
         $(window).resize(function () {
-           $("#epieVariationsBar").css({
+            $("#epieVariationsBar").css({
                 width:'95%',
                 top:'auto',
                 bottom:0
-           });
+            });
         });
 
         $(".detachBox .sep").live("click", function() {
@@ -162,14 +180,28 @@ epie.gui.epiegui = function () {
             }
         });
 
-        $(".tools li a").click(function() {
+        $(".tools li:not(.less) a").click(function() {
             $(this).closest(".tools").find("li").removeClass("current");
             $(this).parent("li").addClass("current");
+        });
+
+        $(".filters li.more a").click(function() {
+            $(".filters li.more").removeClass("current");
+            $(this).parent("li").addClass("current");
+        });
+
+        $(".less").mousedown(function() {
+           $(this).addClass("click");
+        });
+        $(".less").mouseup(function() {
+           $(this).removeClass("click");
+        });
+        $(".less").mouseout(function() {
+           $(this).removeClass("click");
         });
     };
 
     var init = function () {
-        initBinds();
         initGUI();
 
         mainWindow = new epie.gui.main_window();
@@ -255,11 +287,17 @@ epie.gui.epiegui = function () {
         setImages:setImages,
         refreshImages:refreshImages,
 
-        // ui actions
+        // GUI actions
         activateUndo:activateUndo,
         activateRedo:activateRedo,
         desactivateUndo:desactivateUndo,
-        desactivateRedo:desactivateRedo
+        desactivateRedo:desactivateRedo,
+        // Freeze the GUI while executing server-side actions
+        freezeGUI:freezeGUI,
+        unfreezeGUI:unfreezeGUI,
+        
+        isFrozen:isFrozen,
+        freeze:setFreeze
     }
 
 };
