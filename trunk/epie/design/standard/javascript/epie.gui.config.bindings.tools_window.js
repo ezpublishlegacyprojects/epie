@@ -82,6 +82,11 @@ epie.gui.config.bindings.tools_window = [
     {
         'selector':     '#epie_pixelate',
         'click':        epie.gui.config.bind.tool_pixelate,
-        'shortcut': null
-    }
+        'shortcut':     null
+    },
+    {
+        'selector':     '#epie_crop',
+        'click':        epie.gui.config.bind.tool_crop,
+        'shortcut':     'ctrl+c'
+    },
     ];

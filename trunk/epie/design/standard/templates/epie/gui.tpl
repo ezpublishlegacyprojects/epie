@@ -34,6 +34,7 @@
                         'epie.gui.config.bind.tool_rotation.js',
                         'epie.gui.config.bind.tool_levels.js',
                         'epie.gui.config.bind.tool_zoom.js',
+                        'epie.gui.config.bind.tool_crop.js',
                         'epie.gui.config.bind.opts_attach.js',
                         'epie.gui.config.bind.opts_detach.js',
                         'epie.gui.config.zoom.js',
@@ -195,6 +196,7 @@
                                 <li><a href="" id="epie_flip_hor" title="Horizontal Flip">Horizontal Flip</a></li>
                                 <li><a href="" id="epie_flip_ver" title="Vertical Flip">Vertical Flip</a></li>
                                 <li class="more"><a href="" id="epie_rotation" title="Rotation">Rotation</a></li>
+                                <li><a href="" id="epie_crop" title="Crop">Crop</a></li>
                                 <li class="more"><a href="" id="epie_watermark" title="Watermark">Watermark</a></li>
                             </ul>
                         </div>

@@ -1,4 +1,5 @@
 epie.gui.selection_impl = function() {
+    
     var selection = {
         x: 0,
         y: 0,
@@ -35,6 +36,10 @@ epie.gui.selection_impl = function() {
 
         $.log('[selection] (x, y) : (' + selection.x + ',  ' + selection.y + ') - (w, h)' + '(' + selection.w + ', ' + selection.h + ')');
     };
+
+    var deactivate = function () {
+        active = false;
+    }
 
     var hasSelection = function() {
         return (selection.w != 0 && selection.h != 0);
@@ -87,7 +92,8 @@ epie.gui.selection_impl = function() {
         set:setSelection,
         zoomedSelection:getZoomedSelection,
         arrayZoomedSelection:getArrayZoomedSelection,
-        arraySelection: getArraySelection
+        arraySelection: getArraySelection,
+        deactivate:deactivate
     };
 }
 

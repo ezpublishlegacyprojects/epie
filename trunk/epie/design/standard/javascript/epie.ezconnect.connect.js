@@ -83,6 +83,7 @@ epie.ezconnect.connect = function() {
             $.extend(settings.data, selection);
         }
 
+        epie.gui.config.bind.tool_select_remove();
         epie.gui.epiegui.getInstance().freeze(true);
         epie.gui.epiegui.getInstance().main().showLoading();
 

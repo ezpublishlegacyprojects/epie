@@ -48,7 +48,7 @@ epie.gui.config.zoom_impl = function() {
 
         jImgBlock.css({
             'height': (zoom * realHeight / 100) + 'px',
-            'width': (zoom * realWidth / 100) + 'px',
+            'width': (zoom * realWidth / 100) + 'px'
         });
 
         var gridH = $('#grid').height();

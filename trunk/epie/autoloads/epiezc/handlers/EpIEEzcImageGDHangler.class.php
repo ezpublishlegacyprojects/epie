@@ -46,7 +46,7 @@ implements EpIEezcImageRotate,
         if ($region) {
             $newResource = $this->region(null, $resource, $region, $space);
         } else {
-            parent::colorspace($colorspace);
+            parent::colorspace($space);
             return;
         }
 
