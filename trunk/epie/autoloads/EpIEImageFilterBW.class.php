@@ -27,7 +27,7 @@ class EpIEImageFilterBW extends EpIEImageAction {
         'colorspace',
         array(
         'space' => ezcImageColorspaceFilters::COLORSPACE_GREY,
-        'region' => $region
+        'region' => $region,
         ))));
     }
 }
