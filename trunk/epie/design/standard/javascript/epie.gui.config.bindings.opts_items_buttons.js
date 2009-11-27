@@ -17,11 +17,11 @@ epie.gui.config.bindings.opts_items_buttons = [
     },
     {
         'selector':     '#optsRotation #epie_rotation_left',
-        'click':        function() { epie.gui.config.tool_rotation(270) }
+        'click':        function() { epie.gui.config.tool_rotation(90) }
     },
     {
         'selector':     '#optsRotation #epie_rotation_right',
-        'click':        function() { epie.gui.config.tool_rotation(90) }
+        'click':        function() { epie.gui.config.tool_rotation(270) }
     },
     {
         'selector':     '#optsZoom #zoomIn',

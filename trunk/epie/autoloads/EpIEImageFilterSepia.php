@@ -24,11 +24,12 @@ class EpIEImageFilterSepia extends EpIEImageAction {
         }
     }
 
-    static function filter() {
+    static function filter($region = null) {
         return (array(new ezcImageFilter(
         'colorspace',
         array(
-        'space' => ezcImageColorspaceFilters::COLORSPACE_SEPIA,
+            'space' => ezcImageColorspaceFilters::COLORSPACE_SEPIA,
+            'region' => $region
         ))));
     }
 

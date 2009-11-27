@@ -3,18 +3,26 @@
 class EpIEEzcGDHandler extends ezcImageGdHandler
 implements EpIEezcImageRotate,
     EpIEezcImageFlip,
-    EpIEezcImagePixelate {
+    EpIEezcImagePixelate,
+    EpIEezcImageColorSpace
+{
 
     // Apply a the filter on the specified region and return the new resource
-    private function region($filter, $resource, $region) {
+    private function region($filter, $resource, $region, $colorspace = null) {
         $dest = imagecreatetruecolor($region["w"], $region["h"]);
         if (!imagecopy($dest, $resource, 0, 0, $region["x"], $region["y"], $region["w"], $region["h"])) {
             throw new ezcImageFilterFailedException( "1/ " . $function . ' applied on region ' . $region["x"] . "x" . $region["y"]);
         }
-        $pixelate = $this->$filter($dest);
+        if (!$colorspace) {
+            $result = $this->$filter($dest);
+        } else {
+            $this->setActiveResource( $dest );
+            parent::colorspace($colorspace);
+            $result = $dest;
+        }
 
         // do we need to create a new resource or is it ok to directly use $resource ? (in case of error ?)
-        if (!imagecopy($resource, $pixelate, $region["x"], $region["y"], 0, 0, $region["w"], $region["h"])) {
+        if (!imagecopy($resource, $result, $region["x"], $region["y"], 0, 0, $region["w"], $region["h"])) {
             throw new ezcImageFilterFailedException( "2/ " . $function . ' applied on region ' . $region["x"] . "x" . $region["y"]);
         }
 
@@ -29,6 +37,23 @@ implements EpIEezcImageRotate,
         'a' => 127
         );
     }
+
+    ////////////////////////////////////////////////////
+
+    public function colorspace($space, $region = null) {
+        $resource = $this->getActiveResource();
+
+        if ($region) {
+            $newResource = $this->region(null, $resource, $region, $space);
+        } else {
+            parent::colorspace($colorspace);
+            return;
+        }
+
+        $this->setActiveResource( $newResource );
+    }
+
+    ////////////////////////////////////////////////////
 
     public function rotate($angle, $background) {
         $angle = intval($angle);
@@ -75,6 +100,9 @@ implements EpIEezcImageRotate,
         $this->setActiveResource( $newResource );
     }
 
+    ///////////////////////////////////////////////////////////
+    // Horizontal flip
+
     private function horizontalFlipImg($resource) {
         $w = imagesx($resource);
         $h = imagesy($resource);
@@ -105,9 +133,13 @@ implements EpIEezcImageRotate,
         } else {
             $newResource = $this->horizontalFlipImg($resource);
         }
-        
+
         $this->setActiveResource( $newResource );
     }
+
+    // End horizontal flip
+    ///////////////////////////////////////////////////////////
+
 
     ///////////////////////////////////////////////////////////
     // Pixelate

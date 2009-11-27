@@ -7,6 +7,8 @@ $Module = $Params["Module"];
 $prepare_action = new EpIEImagePreAction();
 
 $http = eZHTTPTool::instance();
+
+$region = null;
 if ($http->hasVariable("selection")) { // TODO: change hasvariable to haspostvariable
     $s = $http->variable("selection");
     $region = array("x" => $s["x"],
@@ -14,8 +16,6 @@ if ($http->hasVariable("selection")) { // TODO: change hasvariable to haspostvar
                     "w" => $s["w"],
                     "h" => $s["h"]
     );
-} else {
-    $region = null;
 }
 
 $imageconverter = new EpIEezcImageConverter(EpIEImageToolFlipHor::filter($region));
