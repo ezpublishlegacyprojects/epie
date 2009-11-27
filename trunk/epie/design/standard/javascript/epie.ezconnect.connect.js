@@ -73,10 +73,12 @@ epie.ezconnect.connect = function() {
             settings.data = {}
         }
         $.extend(settings.data, ezdata);
-
         if (epie.gui.selection().hasSelection()) {
             var zoom = epie.gui.config.zoom().get();
-            var selection = epie.gui.selection().arrayZoomedSelection(zoom);
+            var selection = epie.gui.selection().arrayZoomedSelection((100  * 100) / zoom);
+            //var selection = epie.gui.selection().arrayZoomedSelection(zoom);
+
+            $.log('curr zoom = ' + zoom + ' => togoto100: ' + (10000/zoom) );
 
             $.extend(settings.data, selection);
         }

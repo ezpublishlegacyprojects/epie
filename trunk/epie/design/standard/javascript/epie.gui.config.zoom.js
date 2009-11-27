@@ -33,6 +33,13 @@ epie.gui.config.zoom_impl = function() {
     }
 
     var setZoom = function(zoom) {
+        //var oldZoom = currentZoom;
+        var selection = null;
+        if (epie.gui.selection().isSelectionActive()) {
+            selection = epie.gui.selection().zoomedSelection((zoom  * 100) / currentZoom);
+            epie.gui.config.bind.tool_select_remove();
+        }
+
         if (zoom < 10 || zoom > 1500) {
             return;
         }
@@ -51,6 +58,10 @@ epie.gui.config.zoom_impl = function() {
            jImgBlock.css('margin-top',  mt + 'px');
         } else {
             jImgBlock.css('margin-top', '0px');
+        }
+
+        if (selection != null) {
+            epie.gui.config.bind.tool_select(selection);
         }
 
         $.log('new zoom = ' + zoom + "% on ["+realWidth+" x "+realHeight+"]");

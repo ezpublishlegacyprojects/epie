@@ -61,7 +61,6 @@ epie.gui.selection_impl = function() {
     var getArrayZoomedSelection = function(zoom) {
         select = getZoomedSelection(zoom);
 
-
         return {
             'selection[x]': select.x,
             'selection[y]': select.y,
