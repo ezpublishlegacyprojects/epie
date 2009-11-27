@@ -64,8 +64,8 @@ epie.gui.main_window = function() {
             img = $("<img></img>").attr("src", currentImage.image + "?" + currentImage.mixed)
             .attr("alt", "");
             jWindow.find("#main_image").html(img);
-            
         }
+        epie.gui.config.zoom().reZoom();
     }
 
     var showLoading = function() {

@@ -1,21 +1,26 @@
 epie.gui.config.zoom_impl = function() {
-    var jImgBlock;
+    var jImgBlock = $('#main_image');
     var currentZoom = 100;
-    var realImgWidth = 0;
     var realWidth = 0;
     var realHeight = 0;
 
     var init = function(imgWidth, imgHeight) {
-        jImgBlock = $('#main_image');
-        jImgBlock.css('width', 'auto').css('height', 'auto');
+        jImgBlock.css({
+            'width': 'auto',
+            'height': 'auto'
+        });
+
         var img = jImgBlock.find('img:first');
-        img.css('width', 'auto').css('height', 'auto');
+        img.css({
+            'width': 'auto',
+            'height': 'auto'
+        });
 
         img.load(function() {
             realWidth = this.width;
             realHeight = this.height;
             setZoom(currentZoom);
-            img.css('width', '100%').css('height', '100%');
+            $(this).css('width', '100%').css('height', '100%');
         })
     }
 
@@ -36,15 +41,82 @@ epie.gui.config.zoom_impl = function() {
 
         jImgBlock.css({
             'height': (zoom * realHeight / 100) + 'px',
-            'width': (zoom * realWidth / 100) + 'px'
+            'width': (zoom * realWidth / 100) + 'px',
         });
-        $.log('new zoom = ' + zoom);
+
+        var gridH = $('#grid').height();
+
+        if ((jImgBlock.height() - 2) < gridH) {
+           mt = (gridH - (jImgBlock.height() - 2)) / 2;
+           jImgBlock.css('margin-top',  mt + 'px');
+        } else {
+            jImgBlock.css('margin-top', '0px');
+        }
+
+        $.log('new zoom = ' + zoom + "% on ["+realWidth+" x "+realHeight+"]");
     }
 
     var zoomAt = function(zoom) {
         $.log(jImgBlock.height())
 
         setZoom(currentZoom * zoom / 100);
+    }
+
+    var reZoom = function(fromCache) {
+        var img = jImgBlock.find('img:first');
+
+        jImgBlock.css({
+            'height': 'auto',
+            'width': 'auto'
+        });
+
+        img.css({
+            'height': 'auto',
+            'width': 'auto'
+        });
+
+        $.log('fromcache : "' + typeof fromCache + '"');
+
+        img.load(function() {
+            $.log('rezoom from load');
+
+            // this is in case the image has been resized but the load function triggered
+            jImgBlock.css({
+                'height': 'auto',
+                'width': 'auto'
+            });
+
+            $(this).css({
+                'height': 'auto',
+                'width': 'auto'
+            });
+            realWidth = $(this).width();
+            realHeight = $(this).height();
+
+            epie.history().setDimensions(realWidth, realHeight);
+
+            $(this).css({
+                'height': '100%',
+                'width': '100%'
+            });
+
+            setZoom(currentZoom);
+        });
+
+        if (fromCache) {
+            $.log('rezoom from cache');
+            dims = epie.history().getDimensions();
+
+            realWidth = dims.w;
+            realHeight = dims.h;
+
+            img.css({
+                'height': '100%',
+                'width': '100%'
+            });
+
+            setZoom(currentZoom);
+        }
     }
 
     var fitScreen = function () {
@@ -82,7 +154,8 @@ epie.gui.config.zoom_impl = function() {
         fitScreen:fitScreen,
         zoom:setZoom,
         zoomAt:zoomAt,
-        get:getZoom
+        get:getZoom,
+        reZoom:reZoom
     };
 }
 

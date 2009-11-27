@@ -60,6 +60,18 @@ epie.epiehistory = function() {
         }
     };
 
+    var setDimensions = function(w, h) {
+        history[history_version].w = w;
+        history[history_version].h = h;
+    }
+
+    var getCurrentDimensions = function() {
+        return {
+            w: history[history_version].w,
+            h: history[history_version].h
+        };
+    }
+
     var hasAntecedent = function() {
         return (history_version > 0);
     }
@@ -102,7 +114,9 @@ epie.epiehistory = function() {
         refreshCurrent:refreshItem,
         reset:resetHistory,
         hasSuccessor:hasSuccessor,
-        hasAntecedent:hasAntecedent
+        hasAntecedent:hasAntecedent,
+        setDimensions:setDimensions,
+        getDimensions:getCurrentDimensions
     };
 };
 

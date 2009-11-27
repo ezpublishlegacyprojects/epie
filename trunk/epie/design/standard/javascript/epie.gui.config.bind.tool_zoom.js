@@ -1,6 +1,5 @@
 epie.gui.config.bind.tool_zoom_show = function () {
-    epie.gui.epiegui.getInstance().opts().showOpts("#optsZoom");
-    
+    epie.gui.epiegui.getInstance().opts().showOpts("#optsZoom");    
 }
 
 epie.gui.config.tool_zoom_in = function() {

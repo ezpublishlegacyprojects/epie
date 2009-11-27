@@ -9,4 +9,5 @@ epie.ezconnect.success_default = function(response) {
 
     epie.gui.epiegui.getInstance().activateUndo();
     epie.gui.epiegui.getInstance().desactivateRedo();
+    //epie.gui.config.zoom().reZoom();
 };
