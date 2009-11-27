@@ -21,10 +21,12 @@ class EpIEImageToolFlipHor extends EpIEImageAction {
         }
     }
 
-    static function filter() {
+    static function filter($region = null) {
         return (array(new ezcImageFilter(
         'horizontalFlip',
-        array())));
+        array(
+            "region" => $region
+        ))));
     }
 
 }

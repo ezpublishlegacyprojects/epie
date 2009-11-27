@@ -2,8 +2,24 @@
 
 class EpIEEzcGDHandler extends ezcImageGdHandler
 implements EpIEezcImageRotate,
-EpIEezcImageFlip,
-EpIEezcImagePixelate {
+    EpIEezcImageFlip,
+    EpIEezcImagePixelate {
+
+    // Apply a the filter on the specified region and return the new resource
+    private function region($filter, $resource, $region) {
+        $dest = imagecreatetruecolor($region["w"], $region["h"]);
+        if (!imagecopy($dest, $resource, 0, 0, $region["x"], $region["y"], $region["w"], $region["h"])) {
+            throw new ezcImageFilterFailedException( "1/ " . $function . ' applied on region ' . $region["x"] . "x" . $region["y"]);
+        }
+        $pixelate = $this->$filter($dest);
+
+        // do we need to create a new resource or is it ok to directly use $resource ? (in case of error ?)
+        if (!imagecopy($resource, $pixelate, $region["x"], $region["y"], 0, 0, $region["w"], $region["h"])) {
+            throw new ezcImageFilterFailedException( "2/ " . $function . ' applied on region ' . $region["x"] . "x" . $region["y"]);
+        }
+
+        return $resource;
+    }
 
     private function bgArrayFromHex($hex) {
         return array(
@@ -34,7 +50,7 @@ EpIEezcImagePixelate {
         $this->setActiveResource( $newResource );
     }
 
-    public function verticalFlip() {
+    public function verticalFlip($region = null) {
         $resource = $this->getActiveResource();
 
         $w = imagesx($resource);
@@ -59,9 +75,7 @@ EpIEezcImagePixelate {
         $this->setActiveResource( $newResource );
     }
 
-    public function horizontalFlip() {
-        $resource = $this->getActiveResource();
-
+    private function horizontalFlipImg($resource) {
         $w = imagesx($resource);
         $h = imagesy($resource);
 
@@ -81,12 +95,24 @@ EpIEezcImagePixelate {
         }
 
         imagedestroy( $resource );
+        return $newResource;
+    }
+    public function horizontalFlip($region = null) {
+        $resource = $this->getActiveResource();
+
+        if ($region) {
+            $newResource = $this->region("horizontalFlipImg", $resource, $region);
+        } else {
+            $newResource = $this->horizontalFlipImg($resource);
+        }
+        
         $this->setActiveResource( $newResource );
     }
 
-    public function pixelate() {
-        $resource = $this->getActiveResource();
+    ///////////////////////////////////////////////////////////
+    // Pixelate
 
+    private function pixelateImg($resource) {
         $w = imagesx($resource);
         $h =  imagesy($resource);
 
@@ -114,7 +140,7 @@ EpIEezcImagePixelate {
         imagealphablending($newResource, false);
         imagesavealpha($newResource, true);
 
-        $res = imagecopyresampled($newResource, $tmpResource, 
+        $res = imagecopyresampled($newResource, $tmpResource,
             0, 0,
             0, 0,
             $w, $h,
@@ -125,8 +151,23 @@ EpIEezcImagePixelate {
         }
 
         imagedestroy( $tmpResource );
+        return $newResource;
+    }
+
+    public function pixelate($region = null) {
+        $resource = $this->getActiveResource();
+
+        if ($region) {
+            $newResource = $this->region("pixelateImg", $resource, $region);
+        } else {
+            $newResource = $this->pixelateImg($resource);
+        }
+
         $this->setActiveResource( $newResource );
     }
+
+    // End pixelate
+    ///////////////////////////////////////////////////////////
 
 }
 ?>

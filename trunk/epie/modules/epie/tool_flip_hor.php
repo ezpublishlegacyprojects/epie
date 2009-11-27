@@ -2,9 +2,23 @@
 
 include_once 'kernel/common/template.php';
 
+$Module = $Params["Module"];
+
 $prepare_action = new EpIEImagePreAction();
 
-$imageconverter = new EpIEezcImageConverter(EpIEImageToolFlipHor::filter());
+$http = eZHTTPTool::instance();
+if ($http->hasVariable("selection")) { // TODO: change hasvariable to haspostvariable
+    $s = $http->variable("selection");
+    $region = array("x" => $s["x"],
+                    "y" => $s["y"],
+                    "w" => $s["w"],
+                    "h" => $s["h"]
+    );
+} else {
+    $region = null;
+}
+
+$imageconverter = new EpIEezcImageConverter(EpIEImageToolFlipHor::filter($region));
 
 $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath());

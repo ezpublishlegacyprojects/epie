@@ -1,20 +1,20 @@
 <?php
 
 class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
-                                                       implements EpIEezcImageRotate,
-                                                           EpIEezcImageFlip,
-                                                           EpIEezcImagePixelate{
+implements EpIEezcImageRotate,
+    EpIEezcImageFlip,
+    EpIEezcImagePixelate{
     public function rotate($angle, $background) {
         $angle = intval($angle);
         if ( !is_int($angle) || $angle < 0 || $angle > 360) {
             throw new ezcBaseValueException( 'height', $height, 'int > 0 && int < 360' );
         }
 
-//        $this->addFilterOption(
-//            $this->getActiveReference(),
-//            '-background',
-//            '#' + $background
-//        );
+        //        $this->addFilterOption(
+        //            $this->getActiveReference(),
+        //            '-background',
+        //            '#' + $background
+        //        );
 
         $this->addFilterOption(
             $this->getActiveReference(),
@@ -23,11 +23,11 @@ class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
         );
     }
 
-    public function horizontalFlip() {
+    public function horizontalFlip($region = null) {
         $this->addFilterOption($this->getActiveReference(), '-flip');
     }
 
-    public function verticalFlip() {
+    public function verticalFlip($region = null) {
         $this->addFilterOption($this->getActiveReference(), '-flop');
     }
 
@@ -42,7 +42,7 @@ class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
         );
 
     }
-    public function pixelate() {
+    public function pixelate($region = null) {
         $this->addFilterOption($this->getActiveRegerence(),
             '-resize',
             '10%'
@@ -51,7 +51,12 @@ class EpIEEzcImageMagickHandler extends ezcImageImagemagickHandler
             '-resize',
             '1000%'
         );
-
+        if ($region) {
+            $this->addFilterOption($this->getActiveRegerence(),
+            '-region',
+                $region["w"] . "x" . $region["h"]
+            );
+        }
     }
 }
 

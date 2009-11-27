@@ -1,8 +1,8 @@
 <?php
 
 interface EpIEezcImageFlip {
-    public function horizontalFlip();
-    public function verticalFlip();
+    public function horizontalFlip($region = null);
+    public function verticalFlip($region = null);
 }
 
 ?>

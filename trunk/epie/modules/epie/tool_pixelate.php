@@ -2,9 +2,23 @@
 
 include_once 'kernel/common/template.php';
 
+$Module = $Params["Module"];
+
 $prepare_action = new EpIEImagePreAction();
 
-$imageconverter = new EpIEezcImageConverter(EpIEImageToolPixelate::filter());
+$http = eZHTTPTool::instance();
+if ($http->hasVariable("selection")) { // TODO: change hasvariable to haspostvariable
+    $s = $http->variable("selection");
+    $region = array("x" => $s["x"],
+                    "y" => $s["y"],
+                    "w" => $s["w"],
+                    "h" => $s["h"]
+    );
+} else {
+    $region = null;
+}
+
+$imageconverter = new EpIEezcImageConverter(EpIEImageToolPixelate::filter($region));
 
 $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath());
@@ -12,12 +26,12 @@ $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
 $imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
     $prepare_action->getAbsoluteNewThumbnailPath());
 
+
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());
 
 $Result = array();
 $Result["pagelayout"] = false;
 $Result["content"] = $tpl->fetch("design:epie/ajax_responses/default_action_response.tpl");
-
 
 ?>
