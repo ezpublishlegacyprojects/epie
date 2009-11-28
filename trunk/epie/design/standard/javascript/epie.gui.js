@@ -112,7 +112,8 @@ epie.gui.epiegui = function () {
                 $("#epieMainWindow").css("width", ($(this).width() + 24));
             },
             minHeight: 400,
-            minWidth:400
+            minWidth:400,
+             stop: epie.gui.config.zoom().reZoom
         });
 
         var prev = 0;
@@ -307,17 +308,16 @@ epie.gui.epiegui.instance = null;
 
 // static methods
 epie.gui.epiegui.getInstance = function() {
-    if (this.instance == null) {
-        this.instance = new epie.gui.epiegui();
+    if (epie.gui.epiegui.instance == null) {
+        epie.gui.epiegui.instance = new epie.gui.epiegui();
     }
 
-    //$.log('kik l instance => ' + this.instance)
-    return this.instance;
+    return epie.gui.epiegui.instance;
 }
 
 // returns true if the gui object exists
 epie.gui.epiegui.isInstanciated = function() {
-    return (this.instance != null);
+    return (epie.gui.epiegui.instance != null);
 }
 
 

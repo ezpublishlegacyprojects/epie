@@ -21,9 +21,10 @@ foreach ($channels as $c) {
 EpIEImageToolLevels::toolLevels($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath(), $thresholds
 );
-EpIEImageToolLevels::toolLevels($prepare_action->getAbsoluteThumbnailPath(),
-    $prepare_action->getAbsoluteNewThumbnailPath(), $thresholds
-);
+
+EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
+    $prepare_action->getAbsoluteNewThumbnailPath());
+
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());

@@ -27,7 +27,7 @@ $imageconverter = new EpIEezcImageConverter(EpIEImageToolRotation::filter($angle
 $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath());
 
-$imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
+EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
     $prepare_action->getAbsoluteNewThumbnailPath());
 
 $tpl = templateInit();

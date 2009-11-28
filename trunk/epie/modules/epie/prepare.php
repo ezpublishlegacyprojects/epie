@@ -16,7 +16,7 @@ $absolute_image_path = eZSys::rootDir() . "/" . $image_path;
 
 // TODO: Check for editing rights
 
-// Creation of the edition arborescence
+// Creation of the editing arborescence
 
 // /{var folder}/epie/user_id/image_id-version_id
 $user = eZUser::instance();
@@ -25,8 +25,6 @@ $working_folder_path = eZSys::varDirectory() . "/epie/"
     . $user->id() . "/" . $NodeId . "-" . $Version;
 $working_folder_absolute_path = eZSys::rootDir() . "/" . $working_folder_path;
 
-// TODO: can't use eZFSFileSystem::fileExists because even if it's documented
-// as static, it's not defined likewise.
 $fs_handler = new eZFSFileHandler();
 
 if (!$fs_handler->fileExists($working_folder_absolute_path)) {
@@ -44,28 +42,25 @@ $thumb = "thumb-" . $file;
 $fs_handler->fileCopy($absolute_image_path,
     $working_folder_absolute_path . "/" . $file);
 
-// TODO: Creation of a thumbnail
+// Creation of a thumbnail
+EpIEImageToolResize::doThumb($working_folder_absolute_path . "/" . $file,
+    $working_folder_absolute_path . "/" . $thumb);
 
-if (EpIEImageResize::resizeTo($working_folder_absolute_path . "/" . $file,
-$working_folder_absolute_path . "/" . $thumb,
-250, 250))
-    eZDebug::writeDebug(null, "Error while creating thumbnail");
-
-// TODO: retrieve image dimensions
+// retrieve image dimensions
 $ezcanalyzer = new ezcImageAnalyzer($working_folder_path . "/" . $file);
 
 $tpl = templateInit();
 $tpl->setVariable("result", array( 'original' => $working_folder_path . "/" . $file,
-                                   'thumbnail' => $working_folder_path . "/" . $thumb,
-                                   // the key is the folder where the working image is stored
-                                   'key' => $user->id() . "/" . $NodeId . "-" . $Version,
-                                   'image_id' => $NodeId,
-                                   'image_version' => $Version,
-                                   'history_version' => 0,
-                                   'module_path' => 'epie',
-                                   'image_width' => $ezcanalyzer->data->width,
-                                   'image_height' => $ezcanalyzer->data->height,
-                                 ));
+    'thumbnail' => $working_folder_path . "/" . $thumb,
+    // the key is the folder where the working image is stored
+    'key' => $user->id() . "/" . $NodeId . "-" . $Version,
+    'image_id' => $NodeId,
+    'image_version' => $Version,
+    'history_version' => 0,
+    'module_path' => 'epie',
+    'image_width' => $ezcanalyzer->data->width,
+    'image_height' => $ezcanalyzer->data->height,
+));
 
 $Result = array();
 $Result["pagelayout"] = false;

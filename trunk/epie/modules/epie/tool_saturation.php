@@ -14,9 +14,9 @@ if ($http->hasPostVariable("saturation")) {
 EpIEImageToolSaturation::toolSaturation($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath(), $saturation
 );
-EpIEImageToolSaturation::toolSaturation($prepare_action->getAbsoluteThumbnailPath(),
-    $prepare_action->getAbsoluteNewThumbnailPath(), $saturation
-);
+
+EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
+    $prepare_action->getAbsoluteNewThumbnailPath());
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());

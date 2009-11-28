@@ -16,9 +16,8 @@ if ($http->hasPostVariable("value")) {
 EpIEImageFilterBlur::filterBlur($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath(), $value
 );
-EpIEImageFilterBlur::filterBlur($prepare_action->getAbsoluteThumbnailPath(),
-    $prepare_action->getAbsoluteNewThumbnailPath(), $value
-);
+EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
+    $prepare_action->getAbsoluteNewThumbnailPath());
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());

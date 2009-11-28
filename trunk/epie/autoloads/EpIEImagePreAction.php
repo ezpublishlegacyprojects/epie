@@ -8,6 +8,7 @@ class EpIEImagePreAction {
     private $key;
     private $original_image;
     private $working_folder;
+    private $region;
 
     public function  __construct() {
         $http = eZHTTPTool::instance(); //(hasPostVariables hasVariable variable);
@@ -26,9 +27,9 @@ class EpIEImagePreAction {
         $this->image_version = $http->variable('image_version');
         $this->history_version = $http->variable('history_version');
 
-        // retieve ezimage
+        // retieve the attribute image
         $this->original_image = eZContentObjectAttribute::fetch( $this->image_id,
-                                                                 $this->image_version )->attribute('content');
+            $this->image_version )->attribute('content');
         if ($this->original_image === null) {
         // TODO: manage error (the image_id does not match any existing image)
             return;
@@ -41,13 +42,47 @@ class EpIEImagePreAction {
             . $this->original_image->attributeFromOriginal('filename');
 
         // check if file exists (that will mean the data sent if correct)
+        $absolute_image_path = eZSys::rootDir() . "/" . $image_path;
+ 
         $fs_handler = new eZFSFileHandler();
         if (!$fs_handler->fileExists($absolute_image_path)) {
-        // TODO: manage error
+            // TODO: manage error
             return;
         }
-        $absolute_image_path = eZSys::rootDirectory() . "/" . $image_path;
 
+        $this->prepare_region();
+    }
+
+    private function prepare_region() {
+        $region = null;
+
+        $http = eZHTTPTool::instance(); //(hasPostVariables hasVariable variable);
+
+        if ($http->hasVariable("selection")) { // TODO: change hasvariable to haspostvariable
+            $s = $http->variable("selection");
+            if ($s['x'] >= 0
+                && $s['y'] >= 0
+                && $s['w'] > 0
+                && $s['h'] > 0) {
+
+                $region = array("x" => $s["x"],
+                    "y" => $s["y"],
+                    "w" => $s["w"],
+                    "h" => $s["h"]
+                );
+
+            }
+        }
+
+        $this->region = $region;
+    }
+
+    public function hasRegion() {
+        return $this->region !== null;
+    }
+
+    public function getRegion() {
+        return $this->region;
     }
 
     public function getAbsoluteImagePath() { // var/epie/{user_id}/{image_id}-{image_version}/{history_version}-

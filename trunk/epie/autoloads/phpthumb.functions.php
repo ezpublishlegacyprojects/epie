@@ -21,7 +21,6 @@ class phpthumb_functions {
 		return function_exists($functionname);
 	}
 
-
 	function builtin_function_exists($functionname) {
 		if (function_exists('get_defined_functions')) {
 			static $get_defined_functions = array();

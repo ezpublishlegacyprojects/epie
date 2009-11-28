@@ -23,9 +23,8 @@ $imageconverter = new EpIEezcImageConverter(EpIEImageToolPixelate::filter($regio
 $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath());
 
-$imageconverter->perform($prepare_action->getAbsoluteThumbnailPath(),
+EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
     $prepare_action->getAbsoluteNewThumbnailPath());
-
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());

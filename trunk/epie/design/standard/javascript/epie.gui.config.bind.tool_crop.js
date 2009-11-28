@@ -8,10 +8,11 @@ epie.gui.config.bind.tool_crop = function () {
             h:100
         });
     } else {
-        epie.gui.config.bind.tool_select_remove();
         epie.ezconnect.connect.instance().action({
             'action': 'tool_crop'
         });
+        epie.gui.config.bind.tool_select_remove();
+
     }
 
 }
