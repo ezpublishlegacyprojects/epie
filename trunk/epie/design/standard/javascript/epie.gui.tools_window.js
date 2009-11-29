@@ -13,7 +13,7 @@ epie.gui.tools_window = function() {
             var config = this;
             var item = $(config.selector);
             item.click(function () {
-                if (!epie.gui.epiegui.getInstance().isFrozen()) {
+                if (! epie.gui.epiegui.getInstance().isFrozen()) {
                     config.click();
                 }
                 return false;

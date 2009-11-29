@@ -194,6 +194,10 @@
 #epie_rotation_left { background-image:url("../images/ico/rotationLeft.png") }
 #epie_rotation_right { background-image:url("../images/ico/rotationRight.png") }
 
+#epie_alternative_crop_text {
+    display: none;
+}
+
 #zoomIn { background-image:url("../images/ico/zoomIn.png") }
 #zoomOut { background-image:url("../images/ico/zoomOut.png") }
 

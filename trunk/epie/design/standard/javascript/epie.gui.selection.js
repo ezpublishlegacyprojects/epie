@@ -1,5 +1,4 @@
 epie.gui.selection_impl = function() {
-    
     var selection = {
         x: 0,
         y: 0,
@@ -19,7 +18,7 @@ epie.gui.selection_impl = function() {
         selection.w = 0;
         selection.h = 0;
 
-        active = false;
+        deactivate();
     }
 
     var setSelection = function (c) {
@@ -29,16 +28,37 @@ epie.gui.selection_impl = function() {
         selection.h = c.h;
 
         if (c.w == 0 || c.h == 0) {
-            active = false;
+            deactivate()
         } else {
-            active = true;
+            activate();
         }
 
         $.log('[selection] (x, y) : (' + selection.x + ',  ' + selection.y + ') - (w, h)' + '(' + selection.w + ', ' + selection.h + ')');
     };
 
+    var switchCropTexts = function() {
+        var crop = $("#epie_crop");
+        var alternative = $("#epie_alternative_crop_text");
+        var tmp = crop.html();
+
+        $.log('switching crop texts c = "'+tmp+'" & a = "'+alternative.html() + '"');
+
+        crop.html(alternative.html());
+        alternative.html(tmp);
+    }
+
     var deactivate = function () {
+        if (active) {
+            switchCropTexts();
+        }
         active = false;
+    }
+
+    var activate = function() {
+        if (!active) {
+            switchCropTexts();
+        }
+        active = true;
     }
 
     var hasSelection = function() {
