@@ -1,5 +1,7 @@
 {**** ep image editor *****}
-{include uri='design:epie/gui.tpl' attribute=$attribute}
+{run-once}
+    {include uri='design:epie/gui.tpl' attribute=$attribute}
+{/run-once}
 
 {default attribute_base='ContentObjectAttribute'}
 {let attribute_content=$attribute.content}

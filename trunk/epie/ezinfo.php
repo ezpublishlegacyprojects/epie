@@ -18,21 +18,30 @@
 //   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 //   MA 02110-1301, USA.
 
-class epieInfo
-{
-    static function info()
-    {
-        return array( 'Name' => '<a href="http://projects.ez.no/image_editor" target="_blank">Image Editor</a>',
-                      'Version' => "@@@VERSION@@@",
-        			  'Author'	=> 'Stefano Ballabeni',
-                      'Copyright' => "Copyright © 2009",
-                      'License' => "GNU General Public License v2.0",
-                      'Includes the following libraries'            => array( 'jQuery'      => 'v1.3.2 http://jquery.com',
-                                                                              'jQuery UI'   => 'v1.7.2 http://jqueryui.com',
-                                                                              'jCrop'       => 'v0.9.8 http://deepliquid.com/content/Jcrop.html',
-                                                                              'Ajax Upload' => 'v3.5 http://valums.com/ajax-upload/',
-                                                                              'eZ Components' => 'http://ezcomponents.org/')
-                      );
+class epieInfo {
+    static function info() {
+        $eZCopyrightString = 'Copyright (C) 1999-' . date('Y') . ' eZ Systems AS';
+
+        return array( 'Name' => '<a href="http://projects.ez.no/epie">EpIE</a>',
+        'Version' => "0.1 (preview only)",
+        'Author'	=> 'Stefano Ballabeni, Robin Boutros, Adrien Mogenet',
+        'Copyright' => $eZCopyrightString,
+        'License' => "GNU General Public License v2.0",
+        'Includes the following third-party software' => array( 'Name' => 'jQuery',
+                                                                                              'Version' => '1.3.2',
+                                                                                              'Copyright' => 'Copyright (c) 2009, jQuery Team. All rights reserved.',
+                                                                                              'License' => 'Licensed under the Gnu General Public License (GPL) Version 2',),
+        'Includes the following third-party software(2)' => array( 'Name' => 'jQuery UI',
+                                                                                              'Version' => '1.7.2',
+                                                                                              'Copyright' => 'Copyright (c) 2009, PAUL BAKAUS AND THE JQUERY UI TEAM. All rights reserved.',
+                                                                                              'License' => 'Licensed under the Gnu General Public License (GPL) Version 2',),
+        'Includes the following third-party software(2)' => array( 'Name' => 'Jcrop',
+                                                                                              'Version' => '0.9.8',
+                                                                                              'Copyright' => 'Copyright (c) 2008-2009 Deep Liquid Group. All rights reserved.',
+                                                                                              'License' => 'Licensed under the MIT License',),
+
+        'Needs the following libraries' => array('eZ Components' => 'http://ezcomponents.org/'),
+        );
     }
 }
 ?>
