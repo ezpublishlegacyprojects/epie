@@ -59,7 +59,7 @@ epie.gui.opts_window = function() {
             var item = $(config.selector);
             item.click(function() {
                 if (!epie.gui.epiegui.getInstance().isFrozen()) {
-                    config.click();
+                    config.click(this);
                 }
                 return false;
             });

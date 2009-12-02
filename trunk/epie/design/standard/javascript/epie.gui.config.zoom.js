@@ -58,8 +58,14 @@ epie.gui.config.zoom_impl = function() {
     var setZoom = function(zoom) {
         //var oldZoom = currentZoom;
         var selection = null;
+        // for watermark & text tool
+        var selectionData = null;
+        var selectionOptions = null;
         if (epie.gui.selection().isSelectionActive()) {
             selection = epie.gui.selection().zoomedSelection((zoom  * 100) / currentZoom);
+            selectionData = $('.jcrop-tracker:first').html();
+            selectionOptions = epie.gui.config.select_custom_opts;
+            $.log('1| sel options ' + selectionOptions);
             epie.gui.config.bind.tool_select_remove();
         }
 
@@ -84,7 +90,12 @@ epie.gui.config.zoom_impl = function() {
         }
 
         if (selection != null) {
-            epie.gui.config.bind.tool_select(selection);
+            $.log('2| sel opts :' + selectionOptions);
+            epie.gui.config.bind.tool_select(selection, selectionOptions);
+            if (selectionData) {
+                $('.jcrop-tracker:first').html(selectionData);
+            }
+
         }
 
         $.log('new zoom = ' + zoom + "% on ["+realWidth+" x "+realHeight+"]");

@@ -56,7 +56,7 @@ epie.gui.selection_impl = function() {
             activate();
         }
 
-        $.log('[selection] (x, y) : (' + selection.x + ',  ' + selection.y + ') - (w, h)' + '(' + selection.w + ', ' + selection.h + ')');
+        //$.log('[selection] (x, y) : (' + selection.x + ',  ' + selection.y + ') - (w, h)' + '(' + selection.w + ', ' + selection.h + ')');
     };
 
     var switchCropTexts = function() {

@@ -8,12 +8,13 @@ $prepare_action = new EpIEImagePreAction();
 
 $http = eZHTTPTool::instance();
 
-if ($prepare_action->hasRegion()) {
-    $imageconverter = new EpIEezcImageConverter(EpIEImageToolCrop::filter($prepare_action->getRegion()));
+
+
+if ($prepare_action->hasRegion() && $http->hasPostVariable('watermark_image')) {
+    $imageconverter = new EpIEezcImageConverter(EpIEImageToolWatermark::filter($prepare_action->getRegion(), $http->variable('watermark_image')));
 } else {
     // TODO: manage error (just return an empty response?)
 }
-
 
 $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
     $prepare_action->getAbsoluteNewImagePath()
@@ -21,7 +22,6 @@ $imageconverter->perform($prepare_action->getAbsoluteImagePath(),
 
 EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
     $prepare_action->getAbsoluteNewThumbnailPath());
-
 
 $tpl = templateInit();
 $tpl->setVariable("result", $prepare_action->responseArray());

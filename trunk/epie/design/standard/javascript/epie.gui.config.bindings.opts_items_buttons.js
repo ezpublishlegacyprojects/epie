@@ -62,4 +62,16 @@ epie.gui.config.bindings.opts_items_buttons = [
         'selector':     '#optsZoom #actualPixels',
         'click':        epie.gui.config.tool_zoom_actual_pixels
     },
-    ];
+    {
+        'selector':    '#optsWatermarks .epie-watermark-image',
+        'click':           epie.gui.config.bind.tool_place_watermark
+    },
+    {
+        'selector':     '#optsWatermarks button.submit',
+        'click':           epie.gui.config.bind.tool_watermark_submit
+    },
+    {
+        'selector':     '#optsWatermarksPositions button',
+        'click':            epie.gui.config.bind.tool_watermark_set_pos
+    }
+];

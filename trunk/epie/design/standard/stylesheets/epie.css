@@ -401,3 +401,39 @@
     right:17px;
     top:3px;
 }
+
+#optsWatermarks ul {
+    width: 130px;
+    max-height: 110px;
+    margin: 10px auto 0 auto;
+    overflow: scroll;
+    /*
+    * Cooler for browsers supporting css3
+    */
+    overflow-x: visible;
+    overflow-y: scroll;
+}
+
+#optsWatermarksPositions {
+    width: 86px;
+    margin: 2px auto;
+}
+
+#optsWatermarksPositions button {
+    width: 21px;
+    height: 21px;
+    margin: 2px;
+    background:url("../images/positionButton.png") no-repeat;
+}
+
+#optsWatermarksPositions .selected {
+    background:url("../images/positionButton-selected.png") no-repeat;
+}
+
+#optsWatermarks ul li img {
+    width: 100%;
+    max-width: 110px;
+    max-height: 120px;
+    border: 1px solid #CACACA;
+    margin: 2px auto;
+}

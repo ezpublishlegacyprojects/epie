@@ -22,4 +22,5 @@
 // ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
 
 epie.gui.config.bindings.opts_window = [
+
     ];

@@ -40,6 +40,7 @@ epie.gui.config.bind.menu_close_without_saving = function() {
         'action': 'no_save_and_quit',
         'success': function(response) {
             //epie.ezconnect.success_default(response);
+            
             epie.gui.epiegui.getInstance().close();
         }
     });

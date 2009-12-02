@@ -22,22 +22,33 @@
 // ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
 
 epie.gui.config.bind.tool_select_api = null;
+epie.gui.config.select_custom_opts = null;
 
-var kik;
+epie.gui.config.bind.tool_select = function(selection, options) {
+    var settings = {
+        onSelect: epie.gui.selection().set,
+        onChange: epie.gui.selection().set
+    };
 
-epie.gui.config.bind.tool_select = function(selection) {
+    if (typeof options != "undefined") {
+        $.log('on set custop opts');
+        epie.gui.config.select_custom_opts = options;
+        $.extend(settings, options);
+    } else {
+        $.log('on unset custop opts-0');
+        epie.gui.config.select_custom_opts = null;
+    }
+
     if (epie.gui.config.bind.tool_select_api != null) {
-        if (selection != null) {
+        if (selection) {
             epie.gui.config.bind.tool_select_api.setSelect([selection.x, selection.y,
                 selection.x + selection.w, selection.y + selection.h])
             epie.gui.selection().set(selection);
         }
         return;
     }
-    epie.gui.config.bind.tool_select_api  = $.Jcrop("#main_image img:first", {
-        onSelect: epie.gui.selection().set,
-        onChange: epie.gui.selection().set
-    });
+
+    epie.gui.config.bind.tool_select_api  = $.Jcrop("#main_image img:first", settings);
     
     if (selection != null) {
         epie.gui.config.bind.tool_select_api.setSelect([selection.x, selection.y,
@@ -50,6 +61,8 @@ epie.gui.config.bind.tool_select_remove = function (){
     if (epie.gui.config.bind.tool_select_api  != null) {
         epie.gui.config.bind.tool_select_api.destroy();
         epie.gui.selection().deactivate();
+        $.log('on unset custop opts-1');
+        epie.gui.config.select_custom_opts = null;
         epie.gui.config.bind.tool_select_api = null;
     }
 }

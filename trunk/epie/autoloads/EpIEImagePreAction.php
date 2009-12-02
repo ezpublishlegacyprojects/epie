@@ -86,11 +86,10 @@ class EpIEImagePreAction {
                 && $s['y'] >= 0
                 && $s['w'] > 0
                 && $s['h'] > 0) {
-
-                $region = array("x" => $s["x"],
-                    "y" => $s["y"],
-                    "w" => $s["w"],
-                    "h" => $s["h"]
+                $region = array('x' => intval($s['x']),
+                    'y' => intval($s['y']),
+                    'w' => intval($s['w']),
+                    'h' => intval($s['h'])
                 );
 
             }

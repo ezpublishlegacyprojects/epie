@@ -22,6 +22,7 @@ $ViewList['tool_levels'] = array('script' => 'tool_levels.php');
 $ViewList['tool_saturation'] = array('script' => 'tool_saturation.php');
 $ViewList['tool_pixelate'] = array('script' => 'tool_pixelate.php');
 $ViewList['tool_crop'] = array('script' => 'tool_crop.php');
+$ViewList['tool_watermark'] = array('script' => 'tool_watermark.php');
 
 // MENU
 $ViewList['no_save_and_quit'] = array('script' => 'no_save_and_quit.php');

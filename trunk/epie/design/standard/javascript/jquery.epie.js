@@ -27,10 +27,11 @@ var k;
         if(window.console) {
             console.debug(msg);
         } else {
-            if (opera && opera.postError) {
+            if ((typeof opera != "undefined")
+                && opera.postError) {
                 opera.postError(msg);
             } else {
-            alert(msg);
+                alert(msg);
             }
         }
     }

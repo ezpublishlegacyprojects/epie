@@ -111,6 +111,7 @@
                                 <button type="button">Ok</button>
                             </div>
                         </div>
+
                         <div id="optsRotation" class="opts">
                             <div class="topMenu"><h2>Rotation</h2></div>
                             <div class="slider"></div>
@@ -149,6 +150,34 @@
                             </ul>
                             <button id="actualPixels">Actual pixels</button>
                             <button id="fitOnScreen">Fit on screen</button>
+                        </div>
+
+                        <div id="optsWatermarks" class="opts">
+                            <div class="topMenu"><h2>Watermarks</h2></div>
+
+                            <div id="optsWatermarksPositions">
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                                <button></button>
+                            </div>
+
+                            <ul>
+                                <li><img class="epie-watermark-image" src={"watermarks/ez-logo.png"|ezimage()} alt="ez watermark" /></li>
+                                <li><img class="epie-watermark-image" src={"watermarks/elephpant.png"|ezimage()"} alt="elephpant watermark" /></li>
+                                <li><img class="epie-watermark-image" src={"watermarks/logo_chrome.png"|ezimage()"} alt="elephpant watermark" /></li>
+                                <li><img class="epie-watermark-image" src={"watermarks/logo_opera.png"|ezimage()"} alt="elephpant watermark" /></li>
+                                <li><img class="epie-watermark-image" src={"watermarks/logo_safari.png"|ezimage()"} alt="elephpant watermark" /></li>
+                                <li><img class="epie-watermark-image" src={"watermarks/logo_firefox.png"|ezimage()"} alt="elephpant watermark" /></li>
+                                <li><img class="epie-watermark-image" src={"watermarks/logo_ie.png"|ezimage()"} alt="elephpant watermark" /></li>
+                            </ul>
+                            
+                            <button class="submit">Apply</button>
                         </div>
                     </div>
                 </div>
