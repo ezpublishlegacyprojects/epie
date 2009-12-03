@@ -105,6 +105,12 @@
                 data.isCircle = true;
             }
         }
+
+        var recenter = function() {
+            var offset = element.offset();
+            data.center.x = offset.left + data.a;
+            data.center.y = offset.top + data.b;
+        }
         
         // This method is called at the construction of the
         // object. It processes the options and initializes
@@ -113,7 +119,6 @@
             $.extend(settings, options);
 
             minmaxdif =  Math.abs(settings.max - settings.min);
-
 
             element = item;
 
@@ -204,6 +209,7 @@
         }
 
         var refresh = function() {
+            recenter();
             var angle = 0;
             if (settings.clockwise) {
                 angle = twopi - ( (settings.value) / magicval);

@@ -131,8 +131,8 @@
                                 <li><a id="epie_rotation_left" class="vtip" title="90° counter-clockwise rotation" href="#"></a></li>
                                 <li><a id="epie_rotation_right" class="vtip" title="90° clockwise rotation" href="#"></a></li>
                             </ul-->
-                            <label for="cw"><input id="cw" type="radio" name="clockwise"  value="yes" checked="checked" />Clockwise</label>
-                            <label for="ccw"><input id="ccw" type="radio" name="clockwise" value="no"  />Counter-clockwise</label>
+                            <!--label for="cw"><input id="cw" type="radio" name="clockwise"  value="yes" checked="checked" />Clockwise</label>
+                            <label for="ccw"><input id="ccw" type="radio" name="clockwise" value="no"  />Counter-clockwise</label-->
                             <input type="hidden" name="color" value="FFFFFF" />
                             <div id="colorSelector"><div style="background-color: #ffffff"></div></div>
                             <button type="button">Ok</button>
