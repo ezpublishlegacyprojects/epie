@@ -21,15 +21,40 @@
 //
 // ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
 
+epie.gui.config.bind.tool_rotation_slider_api = null;
+
 epie.gui.config.bind.tool_rotation_show = function() {
     $.log('starting rotation');
     epie.gui.epiegui.getInstance().opts().showOpts("#optsRotation");
+
+    if (epie.gui.config.bind.tool_rotation_slider_api == null) {
+        $('#circularSlider').circularslider({
+            clockwise: true,
+            zeroPos: 'top',
+            giveMeTheValuePlease: function(v) {
+                epie.gui.config.bind.tool_rotation_slide(v);
+            }
+        },
+        function(api) {
+            epie.gui.config.bind.tool_rotation_slider_api = api;
+            $("#optsRotation input[name='angle']:first").keyup(function(){
+                $.log('kikou on tapote');
+                if ($(this).val() >= 0 && $(this).val() <= 359)
+                    epie.gui.config.bind.tool_rotation_slider_api.set($(this).val());
+                else
+                    epie.gui.config.bind.tool_rotation_slider_api.set(0);
+
+                $(this).val(epie.gui.config.bind.tool_rotation_slider_api.get());
+            });
+
+        });
+    }
 }
 
 epie.gui.config.bind.tool_rotation_submit = function() {
     var angle = $("#optsRotation input[name='angle']").val();
     var color = $("#optsRotation input[name='color']").val();
-    var cw = $("#optsRotation input[name='clockwise']:first").attr('checked');
+    var cw = $("#optsRotation input[name='angle']:first").attr('checked');
     if (cw) {
         cw = "yes";
     } else {
@@ -70,4 +95,16 @@ epie.gui.config.bind.tool_rotation_preview = function() {
     var angle = $("#optsRotation .slider:first").slider("value");
     $("#optsRotation input[name='angle']").val(angle);
     $.log("rotation preview : " + angle);
+}
+
+epie.gui.config.bind.tool_rotation_preset_value = function(a) {
+    $.log('setting a presetted value');
+
+    if (epie.gui.config.bind.tool_rotation_slider_api != null) {
+        var v = $(a).html();
+        v = v.substr(0, v.length - 1);
+        $.log('valeur en cliquant pliz = ' + v);
+        epie.gui.config.bind.tool_rotation_slider_api.set(v);
+    }
+    return false;
 }

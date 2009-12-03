@@ -24,12 +24,11 @@
 
 class EpIEEzcGDHandler extends ezcImageGdHandler
 implements EpIEezcImageRotate,
-    EpIEezcImageFlip,
-    EpIEezcImagePixelate,
-    EpIEezcImageColorSpace
-{
+EpIEezcImageFlip,
+EpIEezcImagePixelate,
+EpIEezcImageColorSpace {
 
-    // Apply a the filter on the specified region and return the new resource
+// Apply a the filter on the specified region and return the new resource
     private function region($filter, $resource, $region, $colorspace = null) {
         $dest = imagecreatetruecolor($region["w"], $region["h"]);
         if (!imagecopy($dest, $resource, 0, 0, $region["x"], $region["y"], $region["w"], $region["h"])) {
@@ -222,6 +221,27 @@ implements EpIEezcImageRotate,
 
     // End pixelate
     ///////////////////////////////////////////////////////////
+    private function blurImg($resource, $truc) {
+    //        imagefilter($resource, IMG_FILTER_GAUSSIAN_BLUR);
+    //    imagefilter($resource, IMG_FILTER_SMOOTH, 5);
+        $gaussian = array(array(1.0, 2.0, 1.0),
+                                    array(2.0, 4.0 * $truc, 2.0),
+                                    array(1.0, 2.0, 1.0));
+        imageconvolution($image, $gaussian, 16, 0);
 
+        return $resource;
+    }
+
+    public function blur($truc, $region = null) {
+        $resource = $this->getActiveResource();
+
+        if ($region) {
+            $newResource = $this->region("blurImg", $resource, $tric, $region);
+        } else {
+            $newResource = $this->blurImg($resource, $truc);
+        }
+
+        $this->setActiveResource($newResource);
+    }
 }
 ?>

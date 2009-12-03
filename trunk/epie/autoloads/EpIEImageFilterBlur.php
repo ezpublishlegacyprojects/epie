@@ -23,6 +23,15 @@
 // ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
 
 class EpIEImageFilterBlur extends EpIEImageAction {
+    public static function filter($region = null) {
+        return (array(new ezcImageFilter(
+        'blur',
+        array(
+        'region' => $region
+        )
+        )));
+    }
+
     static function filterBlur($src_file, $dst_file, $value = 1) {
 
         $phpthumb = new phpthumb();

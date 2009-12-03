@@ -31,14 +31,6 @@ epie.gui.config.bindings.opts_items_sliders = [
         'step' :        1
     },
     {
-        'selector':     '#optsRotation .slider',
-        'change':       epie.gui.config.bind.tool_rotation_preview,
-        'slide':        function(value) { epie.gui.config.bind.tool_rotation_slide(value) },
-        'min':          0,
-        'max':          360,
-        'step' :        1
-    },
-    {
         'selector':     '#optsLevels #channelR',
         'change':       function () { epie.gui.config.bind.tool_levels_preview('#channelR') },
         'min':          0,

@@ -51,6 +51,7 @@
                         'jquery.epie.js',
                         'jquery.jCrop.min.js',
                         'jquery.hotkeys.js',
+                        'jquery.circular.slider.js',
                         'colorpicker/colorpicker.js',
                         'eye.js',
                         'utils.js',
@@ -114,12 +115,22 @@
 
                         <div id="optsRotation" class="opts">
                             <div class="topMenu"><h2>Rotation</h2></div>
-                            <div class="slider"></div>
-                            <input type="text" name="angle" value="0" />
-                            <ul class="tools">
+                            <div id="selectAngle">
+                                <p class="relative">
+                                    <a class="preset zero" href="javascript:void(0)">0°</a>
+                                    <a class="preset halfpi" href="javascript:void(0)">90°</a>
+                                    <a class="preset pi" href="javascript:void(0)">180°</a>
+                                    <a class="preset threehalfpi" href="javascript:void(0)">270°</a>
+                                </p>
+                                <p id="circularSlider">
+                                    <input type="text" name="angle" value="0" />
+                                </p>
+                             </div>
+
+                            <!--ul class="tools">
                                 <li><a id="epie_rotation_left" class="vtip" title="90° counter-clockwise rotation" href="#"></a></li>
                                 <li><a id="epie_rotation_right" class="vtip" title="90° clockwise rotation" href="#"></a></li>
-                            </ul>
+                            </ul-->
                             <label for="cw"><input id="cw" type="radio" name="clockwise"  value="yes" checked="checked" />Clockwise</label>
                             <label for="ccw"><input id="ccw" type="radio" name="clockwise" value="no"  />Counter-clockwise</label>
                             <input type="hidden" name="color" value="FFFFFF" />

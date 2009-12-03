@@ -35,9 +35,13 @@ epie.gui.config.bindings.opts_items_buttons = [
         'click':        epie.gui.config.bind.tool_levels_submit
     },
     {
+        'selector':     '#selectAngle .preset',
+        'click':        epie.gui.config.bind.tool_rotation_preset_value
+    },
+    {
         'selector':     '#optsSaturation button',
         'click':        epie.gui.config.bind.tool_saturation_submit
-    },
+    },/*
     {
         'selector':     '#optsRotation #epie_rotation_left',
         'click':        function() { epie.gui.config.tool_rotation(90) }
@@ -45,7 +49,7 @@ epie.gui.config.bindings.opts_items_buttons = [
     {
         'selector':     '#optsRotation #epie_rotation_right',
         'click':        function() { epie.gui.config.tool_rotation(270) }
-    },
+    },*/
     {
         'selector':     '#optsZoom #zoomIn',
         'click':        epie.gui.config.tool_zoom_in

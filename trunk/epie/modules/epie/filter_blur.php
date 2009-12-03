@@ -13,9 +13,11 @@ if ($http->hasPostVariable("value")) {
     $value = 1;
 }
 
-EpIEImageFilterBlur::filterBlur($prepare_action->getAbsoluteImagePath(),
-    $prepare_action->getAbsoluteNewImagePath(), $value
-);
+$imageconverter = new EpIEezcImageConverter(EpIEImageFilterBlur::filter($prepare_action->getRegion()));
+
+$imageconverter->perform($prepare_action->getAbsoluteImagePath(),
+    $prepare_action->getAbsoluteNewImagePath());
+
 EpIEImageToolResize::doThumb( $prepare_action->getAbsoluteNewImagePath(),
     $prepare_action->getAbsoluteNewThumbnailPath());
 

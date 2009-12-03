@@ -20,11 +20,11 @@
 }
 
 #epieOptsWindow { position: absolute;
-    width:184px;
-    top:10%;
-    left:78%;
-    z-index:101;
-    display:none;
+                  width:184px;
+                  top:10%;
+                  left:78%;
+                  z-index:101;
+                  display:none;
 }
 #epieOptsWindow .content {
     height:400px;
@@ -139,6 +139,66 @@
 #optsRotation .tools {
     padding:0px 10px;
 }
+
+#selectAngle {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#circularSlider {
+    width: 50px;
+    height: 50px;
+    margin: 2px auto;
+    background: url(../images/rotationSlider.png) no-repeat;
+    text-align: center;
+}
+
+#circularSlider .ui-circular-slider {
+    border: 1px solid black;
+    background: red;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    z-index: 100;
+}
+
+#circularSlider input {
+    width: 18px;
+    text-align: center;
+}
+
+#selectAngle .preset {
+    font-size: 0.5em;
+    position: absolute;
+    display: inline-block;
+    width: 14px;
+    text-align: center;
+    z-index: 99;
+}
+
+#selectAngle .zero {
+    left: 29px;
+    top: 0px;
+}
+
+#selectAngle .halfpi {
+    right: 0px;
+    top: 25px;
+}
+
+#selectAngle .pi {
+    bottom: 0px;
+    left: 28px;
+}
+
+#selectAngle .threehalfpi {
+    left: 0px;
+    top: 25px;
+}
+
 #optsZoom .tools {
     padding:10px 10px 3px;
 }

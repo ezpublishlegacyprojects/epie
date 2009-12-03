@@ -28,7 +28,7 @@ class EpIEezcImageConverter {
     public function __construct($filter) {
     // TODO: check for presence of IM and/or GD here
         $settings = new ezcImageConverterSettings(array(
-            new ezcImageHandlerSettings( 'GD',          'EpIEEzcGDHandler' ),
+            new ezcImageHandlerSettings( 'GD',   'EpIEEzcGDHandler' ),
             //new ezcImageHandlerSettings( 'ImageMagick', 'EpIEEzcImageMagickHandler' ),
             )
         );
